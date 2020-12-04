@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云音乐后台管理系统</title>
+    <link rel="stylesheet" href="Currency.css">
+    <script src="js/highcharts.js"></script>
+    <script src="插件s/jQuery自定义表格Table插件/js/jquery-1.12.3.js"></script>
+    <style>
+        #content1{
+            display: flex;
+            position: relative;
+            top: -22px;
+        }
+        #浏览排行{
+            width: 600px;
+            height: 500px;
+            position: relative;
+            left: 10%;
+            border-right: 1px solid #ccc;
+        }
+        #浏览排行 h2{
+            position: relative;
+            left:50px;
+            width: 100px;
+            background-color: #000000;
+        }
+        #活跃用户{
+            width: 600px;
+            height: 500px;
+            left: 10%;
+            position: relative;
+        }
+        #活跃用户 h2{
+            position: relative;
+            left:50px;
+            width: 100px;
+            background-color: #000000;
+        }
+        .part_title{
+            position: relative;
+            left: 200px;
+            top: 30px;
+        }
+        .example{
+            position: relative;
+            top: 100px;
+            left:24px;
+        }
+        .part_title{
+            color: #ffffff;
+        }
+        #container{
+            position: relative;
+            top: 100px;
+        }
+        #container1{
+            position: relative;
+            top: 100px;
+        }
+        #content{
+            display: flex;
+        }
+        .find{
+            position: relative;
+            top: 130px;
+            left: 50px;
+            width: 250px;
+        }
+        .edit{
+            position: relative;
+            top: 130px;
+        }
+        #chair1{
+            position: relative;
+            top: 30px;
+        }
+        #chart2{
+            position: relative;
+            top: 30px;
+        }
+    </style>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            outline: none;
+        }
+
+        .digital {
+            width: 100%;
+            margin: 30px auto;
+        }
+
+        table.dataTable tbody tr, .reseachIput, #tablesLength > label > select, #tablesPageinate .pageinateBtn {
+            background: #03152E;
+        }
+
+        #userImportTable {
+            background: #000000;
+            color: #fff;
+            border: none !important;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #userImportTable tr {
+            height: 40px;
+            line-height: 40px;
+        }
+        /*自定义表格格式*/
+        table tbody tr, .reseachIput, #tablesLength > label > select, #tablesPageinate .pageinateBtn {
+            background: #9da3a6;
+        }
+
+
+        .userImportTableBottom {
+            /*color: #fff;*/
+        }
+
+        .userImportTableBottom .dataTablesInfo {
+            float: left;
+        }
+
+        .userImportTableBottom .tablePageinate, .userImportTableBottom .digitalLength {
+            float: right;
+        }
+
+        .userImportTableBottom .digitalLength {
+            float: right;
+            padding-top: 0.25em;
+            margin-right: 20px;
+        }
+
+        .userImportTableBottom .digitalLength select {
+            background: #03152E;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            margin: 0 4px;
+            padding: 4px;
+        }
+
+        .tablePageinate .pageinateBtn.current {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            background: #c80d00;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 4px;
+            color: #fff !important;
+            border: none !important;
+        }
+
+        #pageNext:hover, #pagePrevious:hover, .tablePageinate .pageinateBtn:hover {
+            background: #e6a366;
+            cursor: pointer;
+        }
+
+        .tablePageinate .disabled {
+            cursor: no-drop !important;
+        }
+
+        #pageNext, #pagePrevious, .tablePageinate .pageinateBtn {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0px 2px;
+            font-size: 12px;
+            background: #03152E;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 4px;
+            color: #fff !important;
+            border: none !important;
+        }
+
+        .userImportTableBottom .dataTablesInfo > button {
+            color: #fff;
+            margin-left: 20px;
+        }
+
+        .clearBoth {
+            clear: both;
+        }
+
+
+        .importBtns > button {
+            height: 38px;
+            line-height: 38px;
+            border: none;
+            color: #fff;
+            margin: 0 6px;
+        }
+
+        .roleSlect {
+            background: #03152E;
+            padding: 4px 6px;
+            border: none;
+            color: #fff;
+        }
+
+        .reminder {
+            font-size: 13px;
+            text-align: center;
+            background: #03152E;
+            height: 40px;
+            color: #fff;
+            margin-top: -20px;
+            margin-bottom: 20px;
+            line-height: 40px;
+        }
+        .showDatasBtn, .checkBtn {
+            background: #383b3e;
+            border: none;
+            color: #fff;
+            padding: 4px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        button:hover {
+            opacity: 1;
+        }
+
+        #浏览表格{
+            position: relative;
+            width:1200px;
+            top: 0px;
+            left: 10%;
+        }
+        #tableNmae{
+            position: relative;
+            left: 10%;
+            background-color: #1a1a1a;
+            width: 72%;
+        }
+        #tableNmae h2{
+            color: #ffffff;
+        }
+    </style>
+
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div id="logo">
+            <img alt="云音乐logo" id = title_logo src="Images/logo.png">
+            <h1 id = title_name>云音乐</h1>
+        </div>
+        <div id="top">
+            <div id="User-img"><img src="Images/yonghu%20(1).svg" height="25px" width="25px"></div>
+            <div id="User">Admin<img src="Images/bottom.svg" height="20px" width="20px"></div>
+            <div id="User-img1">消息</div>
+            <div id="User-img2"><img src="Images/xiaoxi.svg" height="25px" width="25px"></div>
+        </div>
+    </div>
+<!--    <div id="title2"></div>-->
+    <div id="article">
+        <div id="menu">
+            <div id="help-left">
+                <ul class="nav1" id="help-left-ul">
+                    <li class="li1" id="menu-div1"><a href="2.0后台主页.html"><img src="Images/zhuye.svg" height="20px" width="20px">主页</a></li>
+                    <li class="li1" id="menu-div2">
+                        <a href="#"><img src="Images/yonghu%20(2).svg" height="20px" width="20px">用户管理<img id="li1-img" src="Images/xiangyou.svg" height="10px" width="10px" ></a>
+                        <ul class="nav2">
+                            <li class="li2"><a href="2.0用户信息管理.html">用户信息管理</a></li>
+                            <li class="li2"><a href="2.0用户浏览维护.html">用户浏览数据</a></li>
+                        </ul>
+                    </li>
+                    <li class="li1" id="menu-div3"><a href="2.0资讯内容审核.html"><img src="Images/zixun.svg" height="20px" width="20px">资讯管理</a></li>
+                    <li class="li1" id="menu-div4"><a href="List.html"><img src="Images/bangdan.svg" height="20px" width="20px">榜单管理</a></li>
+                    <li class="li1" id="menu-div5"><a href="Comment.html"><img src="Images/pinglun.svg" height="20px" width="20px">评论管理</a></li>
+                    <li class="li1" id="menu-div6"><a href="#"><img src="Images/lianxi.svg" height="20px" width="20px">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Main_content">
+            <div id="content1">
+                <div id="浏览排行">
+                    <h2 class="part_title">浏览排行</h2>
+                    <div id="chair1" style="max-width:800px;height:400px"></div>
+                    <div id="content">
+                    </div>
+                    <!--highcharts.js 中搜索 credits属性，设置 enabled: false 隐藏底部网址   !0  显示 -->
+                </div>
+                <div id="活跃用户">
+                    <h2 class="part_title">活跃用户</h2>
+                    <div id="chart2" style="max-width:800px;height:400px"></div>
+                    <div id="content1">
+                    </div>
+                </div>
+            </div>
+            <div id="tableNmae"><h2>用户浏览表</h2></div>
+            <div id="浏览表格">
+                <div class="digital">
+                    <!-- 中间表格部分  S-->
+                    <table width="100%" id="userImportTable" border="0" cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th id="userImportAllTd"><input type="checkbox" name="userImportAll"></th>
+                            <th>昵称</th>
+                            <th>账号</th>
+                            <th>用户分类</th>
+                            <th>用户组</th>
+                            <th>号码</th>
+                            <th>邮箱</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="reminder"><p>没有检索到数据</p></div>
+                    <div class="userImportTableBottom">
+                        <!--显示已选中数据，可进行批量操作-->
+                        <div class="dataTablesInfo" role="status" aria-live="polite">
+                            <span>已选中<span class="selectedNumImport">0</span>项</span>
+                        </div>
+                        <!--显示页码数，前翻页，后翻页，当前页码-->
+                        <div class=" tablePageinate">
+                        </div>
+                        <!--可选择每页暂时数据条数-->
+                        <div class="digitalLength">
+                            <label>
+                                每页显示
+                                <select name="tablesLength" class="tablesLength" onchange="changePages(this.value)">
+                                    <!--<option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>-->
+                                </select>
+                            </label>
+                        </div>
+                        <!--消除浮动效果，防止影响后面的布局-->
+                        <div class="clearBoth"></div>
+                    </div>
+                    <!-- 中间表格部分  E-->
+                    <!--展示所选数据的按钮-->
+                    <div class="showDatas">
+                        <button class="showDatasBtn" onclick="showDatas()">展示所选数据</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    var chart = Highcharts.chart('chart2', {
+        title: {
+            text: '本周活跃用户top5'
+        },
+        yAxis: {
+            title: {
+                text: '评论量'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2
+            }
+        },
+        series: [
+            {
+                name: '普京',
+                data: [4, 5, 5, 6, 9, 11],
+                color:"#ff0000"
+            },
+            {
+                name: '川普',
+                data: [2, 2, 9, 29, 3, 22]
+            },
+            {
+                name: '马克龙',
+                data: [3, 2, 5, 1, 35, 17]
+            },
+            {
+                name: '默克尔',
+                data: [null, null, 11, 12, 32, 42]
+            },
+            {
+                name: '安倍晋三',
+                data: [12, 25, 21, 11, 13, 46]
+            }
+        ],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+    var chart1 = Highcharts.chart('chair1', {
+        title: {
+            text: '本周榜单top5'
+        },
+        yAxis: {
+            title: {
+                text: '播放量'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2
+            }
+        },
+        series: [
+            {
+                name: '我和我的祖国',
+                data: [43934, 52503, 57177, 69658, 97031, 119931],
+                color:"#ff0000"
+            },
+            {
+                name: '说好不哭',
+                data: [24916, 24064, 59742, 29851, 32490, 60282]
+            },
+            {
+                name: 'I LOVE YOU',
+                data: [11744, 37722, 16005, 19771, 20185, 24377]
+            },
+            {
+                name: '失眠',
+                data: [null, null, 7988, 12169, 15112, 22452]
+            },
+            {
+                name: '明明',
+                data: [12908, 35948, 8105, 11248, 8989, 11816]
+            }
+        ],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+</script>
+
+</body>
+<script>
+    /*模拟数据 S*/
+    var jsonData = {
+        "role": [
+            "流失用户",
+            "不活跃用户",
+            "回流用户",
+            "活跃用户",
+            "忠诚用户"
+        ],
+        "status": 1,
+        "mesg": "获取用户信息成功",
+        "data": [
+            {
+                "description": "",
+                "name": "普京",
+                "store_dir": "",
+                "email": "",
+                "id": 109990,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/\u884c\u8d22\u90e8",
+                "role": "活跃用户",
+                "phone": "",
+                "username": "109990",
+                "department": ""
+            },
+            {
+                "description": "",
+                "name": "川普",
+                "store_dir": "",
+                "email": "",
+                "id": 109991,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/\u884c\u8d22\u90e8",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "109991",
+                "department": ""
+            },
+            {
+                "description": "",
+                "name": "马克龙",
+                "store_dir": "",
+                "email": "",
+                "id": 109992,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/\u884c\u8d22\u90e8",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "109992",
+                "department": ""
+            },
+            {
+                "description": "",
+                "name": "默克尔",
+                "store_dir": "",
+                "email": "",
+                "id": 109993,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/\u884c\u8d22\u90e8",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "109993",
+                "department": ""
+            },
+            {
+                "description": "",
+                "name": "安倍晋三",
+                "store_dir": "",
+                "email": "",
+                "id": 109994,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/\u884c\u8d22\u90e8",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "109994",
+                "department": ""
+            },
+            {
+                "description": "",
+                "name": "刘伯温",
+                "store_dir": "",
+                "email": "",
+                "id": 111110,
+                "group": "",
+                "role": "活跃用户",
+                "phone": "",
+                "username": "111110",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "李善长",
+                "store_dir": "",
+                "email": "",
+                "id": 111111,
+                "group": "",
+                "role": "活跃用户",
+                "phone": "",
+                "username": "111111",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "宋濂",
+                "store_dir": "",
+                "email": "",
+                "id": 111112,
+                "group": "Domain Controllers",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "111112",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "冯胜",
+                "store_dir": "",
+                "email": "",
+                "id": 111113,
+                "group": "",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "111113",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "朱棣",
+                "store_dir": "",
+                "email": "",
+                "id": 111114,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/WEB\u524d\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "111114",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "李三",
+                "store_dir": "",
+                "email": "",
+                "id": 111115,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/WEB\u524d\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "111115",
+                "department": ""
+            }, {
+                "description": "ewqrfadfassadsfasfd",
+                "name": "常遇春",
+                "store_dir": "",
+                "email": "dadsa@ada.com",
+                "id": 1111116,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/WEB\u524d\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "15035125625",
+                "username": "111116",
+                "department": "adad123121"
+            }, {
+                "description": "",
+                "name": "徐达",
+                "store_dir": "",
+                "email": "",
+                "id": 111117,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/Python\u540e\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "111117",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "李文忠",
+                "store_dir": "",
+                "email": "",
+                "id": 111118,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/Python\u540e\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "111118",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "久久萨芬",
+                "store_dir": "",
+                "email": "",
+                "id": 9,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/\u884c\u8d22\u90e8",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "tl",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "金事",
+                "store_dir": "",
+                "email": "",
+                "id": 10,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/Python\u540e\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "lxs",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "冯凤凤",
+                "store_dir": "",
+                "email": "",
+                "id": 11,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/WEB\u524d\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "\u6d4b\u8bd5\u8005\u5e10\u53f7",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "周周洲",
+                "store_dir": "",
+                "email": "",
+                "id": 12,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/WEB\u524d\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "\u66fe\u6708\u6708",
+                "department": ""
+            }, {
+                "description": "",
+                "name": "而言",
+                "store_dir": "",
+                "email": "",
+                "id": 13,
+                "group": "\u8f6f\u4ef6\u7814\u53d1\u90e8/WEB\u524d\u7aef",
+                "role": "\u8fd0\u7ef4\u7ba1\u7406\u5458",
+                "phone": "",
+                "username": "\u589e\u589e\u589e",
+                "department": ""
+            }
+        ]
+    };
+    /*模拟数据 E*/
+
+
+    var backupAataArray = [],//接受接口的数据，避免翻页的时候发送多次请求
+        dataTotalNum = 0,//数据总条数
+        tableNum = 5,//每一页展示的数据条数
+        filtrateTable = [],//table每次需要展示的数据，受每页展示条数的限制;
+        currentPageNum = 1,//当前所在页码;
+        pageFixedNum = 6,//初始化定的页码数量
+        dataSet = new Set();//用集合来存储选中的数据
+    var roleSelect = []//角色下拉框数据;
+    var pagesChoose = [1, 2, 3, 5, 10, 20];//自定义每页数据显示条数，可修改
+    var setOn = true;
+    /*初始化表格的函数 S*/
+    tableInit(jsonData, true, true, true);
+    /*初始化表格的函数 E*/
+    /*
+     * 渲染的table的id 重要，重要。渲染多个table的关键（这个留着我下次再封装吧，突然感觉还要考虑很多东西）
+     * jsonData:数据（这里是使用的固定数据，因为ajax本地跨域的问题，所以没有使用ajax传递数据，项目中，需根据实际环境做出调整）
+     * 每页展示的数据条数,默认为5 可填写的格式为，number true(为默认)
+     * 可修改的每页展示条数，默认为[5,10,20];，填写格式为 array true(为默认)
+     * 是否添加翻页选中效果 此处使用了set集合的形式，避免重合，所以请使用唯一标识来区别 true 默认打开，false 关闭
+     * */
+    function tableInit(result, dataNum, pages, setOpen) {
+        setOn = setOpen;
+        if (!dataNum) {
+            alert("请填写正确的每页展示数据格式！")
+        } else {
+            if (typeof dataNum == "number") {
+                tableNum = dataNum;
+            } else {
+                tableNum = 5;//修改起始页数
+            }
+            /*tableNum=5;*/
+        }
+        if (result.status) {
+            if (result.data) {
+                if (result.data.length <= 0) {
+                    return false;
+                }
+                $(".reminder").remove();
+                backupAataArray = result.data;
+                dataTotalNum = backupAataArray.length;
+                if (backupAataArray.length > tableNum) {
+                    filtrateTable = backupAataArray.slice(0, tableNum);
+                } else {
+                    filtrateTable = backupAataArray.slice(0);
+                }
+            }
+            roleSelect = result.role;
+        }
+        if (pages) {
+            if (pages.length > 0) {
+                for (var i in pages) {
+                    var optionPage = $('<option value="' + pages[i] + '">' + pages[i] + '</option>');
+                    $(".tablesLength").append(optionPage);
+                }
+            } else {
+                var pages = [5, 10, 20];
+                for (var i in pages) {
+                    var optionPage = $('<option value="' + pages[i] + '">' + pages[i] + '</option>');
+                    $(".tablesLength").append(optionPage);
+                }
+            }
+        }
+
+        tableCreate();
+        /*创建页码*/
+        createPages();
+    }
+    /*)*/;
+
+
+    /*创建table数据*/
+    function tableCreate() {
+        $("#userImportTable>tbody").html("");
+        $("#userImportAllTd>input").prop("checked", false);
+        /*创建table里面的数据结构 td的各项值 S*/
+        for (var i in filtrateTable) {
+            var trHtml = $("<tr>" +
+                "<td class='ceckedImportTd'><input type='checkbox' name='ceckedImport'  value='" + filtrateTable[i].id + "'/></td>" +
+                "<td>" + (filtrateTable[i].name || 'N/A') + "</td>" +
+                "<td>" + filtrateTable[i].username + "</td>" +
+                "<td class='roleTd'><select class='roleSlect' onchange='roleSelect(" + filtrateTable[i].id + ",this.value)'></select></td>" +
+                "<td>" + (filtrateTable[i].group || 'N/A') + "</td>" +
+                "<td>" + (filtrateTable[i].phone || 'N/A') + "</td>" +
+                "<td>" + (filtrateTable[i].email || 'N/A') + "</td>" +
+                /* "<td>"+(filtrateTable[i].department||'N/A')+"</td>"+*/
+                "<td><button class='checkBtn' onclick='check(&quot;" + filtrateTable[i].id + "&quot;)'>编辑</button></td>" +
+                "</tr>");
+            //按照集合内容判断现选中的input 翻页保留选中效果
+            if (setOn) {
+                var checkedTdId = trHtml.find(".ceckedImportTd>input").val();
+                var checkedFlg = "";
+                if (dataSet.has(checkedTdId)) {
+                    checkedFlg = "checked";
+                    trHtml.find(".ceckedImportTd>input").prop("checked", true);
+                }
+            } else {
+                dataSet.clear();
+                chooseDataNm();
+            }
+
+            /*自定义td内容 S*/
+            //角色下拉框
+            for (var j in roleSelect) {
+                var roleOption = "";
+                if (filtrateTable[i].role == roleSelect[j]) {
+                    roleOption = $("<option value='" + roleSelect[j] + "' selected = 'selected'>" + roleSelect[j] + "</option>");
+                } else {
+                    roleOption = $("<option value='" + roleSelect[j] + "'>" + roleSelect[j] + "</option>");
+                }
+                trHtml.find(".roleSlect").append(roleOption);
+            }
+            /*自定义td内容 E*/
+            /*添加tr内容到table tbody 中*/
+            $("#userImportTable>tbody").append(trHtml);
+        }
+        /*创建table里面的数据结构 td的各项值 E*/
+        /*判断是否当页全选*/
+        if ($(".ceckedImportTd>input:checked").length == $(".ceckedImportTd>input").length) {
+            //已全选
+            $("#userImportAllTd>input").prop("checked", true);
+        }
+        /*做单选和多选部分*/
+        /*单选效果*/
+        $(".ceckedImportTd,.ceckedImportTd>input").bind("click", function (e) {
+            if (e.target.nodeName.toUpperCase() == 'INPUT') {
+                if ($("input[name='ceckedImport']").length == $("input[name='ceckedImport']:checked").length) {
+                    $("#userImportAllTd>input").prop("checked", true);
+                } else {
+                    $("#userImportAllTd>input").prop("checked", false);
+                }
+                if (this.checked) {
+                    dataSet.add($(this).val());
+                } else {
+                    dataSet.delete($(this).val());
+                }
+                chooseDataNm();
+                e.stopPropagation();
+            } else {
+                var ch = $(this).find('input').prop('checked');
+                if (ch == false) {
+                    $(this).find('input').prop('checked', true);
+                    if ($("input[name='ceckedImport']").length == $("input[name='ceckedImport']:checked").length) {
+                        $("#userImportAllTd>input").prop('checked', true);
+                    } else {
+                        $("#userImportAllTd>input").prop('checked', false);
+                    }
+                    dataSet.add($(this).find('input').val());
+                } else {
+                    $(this).find('input').prop('checked', false);
+                    if ($("input[name='ceckedImport']").length == $("input[name='ceckedImport']:checked").length) {
+                        $("#userImportAllTd>input").prop('checked', true);
+                    } else {
+                        $("#userImportAllTd>input").prop('checked', false);
+                    }
+                    dataSet.delete($(this).find('input').val());
+                }
+                chooseDataNm();
+            }
+        });
+
+        /*全选部分*/
+        $("#userImportAllTd,#userImportAllTd>input").click(function (e) {
+            if (e.target.nodeName.toUpperCase() == 'INPUT') {
+                console.log("cccccccccccccc");
+                $("input[name='ceckedImport']").prop("checked", this.checked);
+                if (this.checked) {
+                    $("input[name='ceckedImport']").each(function (index, input) {
+                        dataSet.add($(input).val());
+                    })
+                } else {
+                    $("input[name='ceckedImport']").each(function (index, input) {
+                        dataSet.delete($(input).val());
+                    })
+                }
+                chooseDataNm();
+                e.stopPropagation();
+            } else {
+                var ch = $(this).find('input').prop('checked');
+                if (ch == false) {
+                    $(this).find('input').prop('checked', true);
+                    $("input[name='ceckedImport']").prop("checked", true);
+
+                    $("input[name='ceckedImport']").each(function (index, input) {
+                        dataSet.add($(input).val());
+                    })
+                } else {
+                    $(this).find('input').prop('checked', false);
+                    $("input[name='ceckedImport']").prop("checked", false);
+                    $("input[name='ceckedImport']").each(function (index, input) {
+                        dataSet.delete($(input).val());
+                    })
+                }
+                chooseDataNm();
+            }
+
+        });
+    };
+
+    /*创建翻页*/
+    function createPages() {
+        /*批量导入用户翻页效果  需要实际数据支持*/
+        var pagesNum = Math.ceil(dataTotalNum / tableNum);//计算总页码数
+        $(".tablePageinate").html("");
+        var pagesButtons = $('<a class="pageinateBtn previous disabled" aria-controls="userImportTable" pageId="0" tabindex="0" previousPage="0" id="pagePrevious">&lt;</a>' +
+            '<span class="pageBtnS">' +
+            '</span>' +
+            '<a class="pageinateBtn next" aria-controls="userImportTable" pageId="2" tabindex="0" nextPage="' + pagesNum + '" id="pageNext">&gt;</a>')
+        $(".tablePageinate").append(pagesButtons);
+        if (pagesNum <= 0) {
+            return false;
+        }
+        var detailPage = $('<a class="pageinateBtn current" aria-controls="userImportTable" pageId="1" tabindex="0">1</a>');
+        $(".tablePageinate").find(".pageBtnS").append(detailPage);
+
+
+        //初始化页码，包括当页码是在标准页码pageFixedNum之内的页码数，包括产生省略号的页码效果
+        if (pagesNum >= 2 && pagesNum <= pageFixedNum) {
+            for (var num = 2; num <= pagesNum; num++) {
+                var detailPages = $('<a class="pageinateBtn " aria-controls="userImportTable" pageId="' + num + '" tabindex="0">' + num + '</ a>');
+                $(".tablePageinate").find(".pageBtnS").append(detailPages);
+            }
+        }
+        if (pagesNum > pageFixedNum) {
+            var previousEllipsis = $('<span class="previousEllipsis" hidden="hidden">...</span>');
+            $(".tablePageinate").find(".pageBtnS").append(previousEllipsis);
+            for (var num = 2; num <= pageFixedNum - 1; num++) {
+                var detailPages = $('<a class="pageinateBtn " aria-controls="userImportTable" pageId="' + num + '" tabindex="0">' + num + '</ a>');
+                $(".tablePageinate").find(".pageBtnS").append(detailPages);
+            }
+            for (var num = pageFixedNum; num < pagesNum; num++) {
+
+                var detailPages = $('<a class="pageinateBtn" aria-controls="userImportTable" pageId="' + num + '" tabindex="0" style="display:none">' + num + '</ a>');
+                $(".tablePageinate").find(".pageBtnS").append(detailPages);
+            }
+            var nextEllipsis = $('<span class="nextEllipsis">...</span>');
+            $(".tablePageinate").find(".pageBtnS").append(nextEllipsis);
+            var detailPages = $('<a class="pageinateBtn" aria-controls="userImportTable" pageId="' + pagesNum + '" tabindex="0" >' + pagesNum + '</ a>');
+            $(".tablePageinate").find(".pageBtnS").append(detailPages);
+        };
+
+
+        /*翻页效果*/
+        /*前翻页*/
+        $("#pagePrevious").bind("click", function () {
+            var pageNum = parseInt($(this).attr("pageId"));
+            /*前翻页禁用效果*/
+            if (pageNum <= 0) {
+                $(this).addClass("disabled");
+                return false;
+            }
+            if (pageNum > 0) {
+                currentPageNum = pageNum;
+                pageNum--;
+                $("#pageNext").attr("pageId", pageNum + 2).removeClass("disabled");
+                $(this).attr("pageId", pageNum);
+                $(".pageBtnS>a").eq(pageNum).addClass("current").siblings().removeClass("current");
+                /*获取分页数据*/
+                filtrateTable = backupAataArray.slice((currentPageNum - 1) * tableNum, currentPageNum * tableNum);
+                tableCreate();
+
+            }
+
+
+            /*前翻页适当保留6位页码数，前省略点的消失和后省略点的出现的情况*/
+            if ($(".pageBtnS>a").eq(pageNum - 1).css("display") == "none" && $(".pageBtnS>a").eq(pageNum - 2).css("display") == "none") {
+                $(".pageBtnS>a").eq(pageNum - 1).css("display", "inline-block")
+            }
+            /*console.log(pageNum);*/
+            if (pageNum < 4) {
+                $(".previousEllipsis").hide();
+                $(".nextEllipsis").show();
+
+                for (var i = 1; i < 4; i++) {
+                    $(".pageBtnS>a").eq(i).css("display", "inline-block");
+                }
+                for (var i = 2; i < pagesNum - 4; i++) {
+                    $(".pageBtnS>a").eq(pagesNum - i).css("display", "none");
+                }
+                return false;
+            }
+            if (pagesNum - pageNum > 3) {
+                $(".nextEllipsis").show();
+                for (var i = pageNum + 1; i < pagesNum - 2; i++) {
+                    $(".pageBtnS>a").eq(i + 1).css("display", "none");
+                }
+            }
+        })
+        /*后翻页*/
+        $("#pageNext").bind("click", function () {
+            var pageNum = parseInt($(this).attr("pageId"));
+            if (pageNum > pagesNum) {
+                $(this).addClass("disabled");
+                return;
+            }
+            if (pageNum < pagesNum + 1) {
+                $("#pagePrevious").attr("pageId", pageNum - 1).removeClass("disabled");
+                currentPageNum = pageNum;
+                pageNum++;
+                $(this).attr("pageId", pageNum);
+                $(".pageBtnS>a").remove("current");
+                $(".pageBtnS>a").eq(pageNum - 2).addClass("current").siblings().removeClass("current");
+
+            }
+
+            /*翻页效果产生省略号的延续效果*/
+            /*翻页数据修改*/
+            /*判断当前页数数据是否为5条满数据，分别的截取方法*/
+
+            if (currentPageNum * tableNum > dataTotalNum) {
+                filtrateTable = backupAataArray.slice((currentPageNum - 1) * tableNum);
+            } else {
+                filtrateTable = backupAataArray.slice((currentPageNum - 1) * tableNum, currentPageNum * tableNum);
+            }
+            tableCreate();
+
+
+
+            /*后翻页的时候 适当保留后五位页码显示，此时后省略号消失。控制前省略号的显示情况，当页码显示数量超过6时，即可产生前省略号*/
+            if ($(".pageBtnS>a").eq(pageNum - 1).css("display") == "none" && $(".pageBtnS>a").eq(pageNum).css("display") == "none") {
+                $(".pageBtnS>a").eq(pageNum - 1).css("display", "inline-block");
+            }
+            if (pagesNum - pageNum < 2) {
+                $(".nextEllipsis").hide();
+                $(".previousEllipsis").show();
+                for (var i = 1; i < 5; i++) {
+                    $(".pageBtnS>a").eq(pagesNum - i).css("display", "inline-block");
+                }
+                for (var i = 1; i < pagesNum - 5; i++) {
+                    $(".pageBtnS>a").eq(i).css("display", "none");
+                }
+                return false;
+            }
+            if (pageNum >= 6) {
+                $(".previousEllipsis").show();
+                for (var i = 1; i < pageNum - 3; i++) {
+                    $(".pageBtnS>a").eq(i).css("display", "none");
+                }
+            }
+        })
+        /*自选页码点击翻页事件*/
+        $(".pageBtnS .pageinateBtn").bind("click", function () {
+            var currentPageNum = parseInt($(this).attr("pageId"));
+            /*控制前省略号显示事件，页码在5和倒数第3时触发事件*/
+            if (currentPageNum <= 5) {
+                $(".previousEllipsis").hide();
+                $(".nextEllipsis").show();
+                for (var i = 1; i < 5; i++) {
+                    $(".pageBtnS>a").eq(i).css("display", "inline-block");
+                }
+                for (var j = 5; j < pagesNum - 1; j++) {
+                    $(".pageBtnS>a").eq(j).css("display", "none");
+                }
+            }
+            /*前后翻页省略*/
+            if (currentPageNum > 4 && pagesNum - currentPageNum >= 3) {
+                $(".previousEllipsis").show();
+                $(".nextEllipsis").show();
+                $(".pageBtnS>a").eq(currentPageNum - 2).css("display", "inline-block");
+                $(".pageBtnS>a").eq(currentPageNum).css("display", "inline-block");
+                for (var i = 1; i < pageNum - 2; i++) {
+                    $(".pageBtnS>a").eq(i).css("display", "none");
+                }
+                for (var j = currentPageNum + 1; j < pagesNum - 1; j++) {
+                    $(".pageBtnS>a").eq(j).css("display", "none");
+                }
+            }
+            /*后翻省略*/
+            if (pagesNum - currentPageNum < 4) {
+                $(".nextEllipsis").hide();
+                $(".previousEllipsis").show();
+                for (var i = 1; i < 6; i++) {
+                    $(".pageBtnS>a").eq(pagesNum - i).css("display", "inline-block");
+                }
+                for (var j = 1; j < pagesNum - 5; j++) {
+                    $(".pageBtnS>a").eq(j).css("display", "none");
+                }
+            }
+
+
+            $(".pageBtnS>a").eq(currentPageNum - 1).addClass("current").siblings().removeClass("current");
+            if (currentPageNum * tableNum > dataTotalNum) {
+                filtrateTable = backupAataArray.slice((currentPageNum - 1) * tableNum);
+            } else {
+                filtrateTable = backupAataArray.slice((currentPageNum - 1) * tableNum, currentPageNum * tableNum);
+            }
+            $("#pagePrevious").attr("pageId", currentPageNum - 1);
+            $("#pageNext").attr("pageId", currentPageNum + 1);
+            if (currentPageNum - 1 > 0) {
+                $("#pagePrevious").removeClass("disabled");
+            }
+            if (currentPageNum + 1 < pagesNum) {
+                $("#pageNext").removeClass("disabled");
+            }
+            tableCreate();
+        })
+
+    }
+
+
+    /*修改角色*/
+    function roleSelect(id, value) {
+        backupAataArray[id].role = value;
+    }
+    /*已选多少项目*/
+    function chooseDataNm() {
+        $(".selectedNumImport").html(Array.from(dataSet).length);
+    }
+    /*设置每页显示的条数S*/
+    function changePages(pageNum) {
+        tableNum = pageNum;
+        if (backupAataArray.length > tableNum) {
+            filtrateTable = backupAataArray.slice(0, tableNum);
+        } else {
+            filtrateTable = backupAataArray.slice(0);
+        }
+        tableCreate();
+        createPages();
+    }
+    /*设置每页显示的条数E*/
+
+    /*按钮点击事件E*/
+    //获取当前点击数量极其下标 展示获取的数据
+    function showDatas() {
+        var importArray = Array.from(dataSet);
+
+        if (importArray.length <= 0) {
+            alert("未选择数据！")
+            return false;
+        }
+        alert("您选择的数据id为：" + importArray + "");
+
+    }
+    /*编辑按钮*/
+    function check(id) {
+        alert("确认修改id为" + id + "的用户分类！");
+    }
+</script>
+</html>

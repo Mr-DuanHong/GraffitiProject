@@ -1,0 +1,137 @@
+body {
+    /*content：内容；padding：内边距;border：边框;margin:外边距。text-align：文本对齐方式*/
+    margin: 0;
+    background-color: #020202;
+    text-align: center;
+}
+
+
+.signin {
+    /*登录框(含Logo)整体设置*/
+    display:flex;
+    flex-flow:column nowrap;   /*设置伸缩盒布局主轴为垂直方向（P162)*/
+    text-align: center;
+    margin: 160px 0 0 0;  /*确定登录框主体的位置*/
+    font-size: 18px;
+}
+
+.signin-wrapper {
+    /*登录框主体设置*/
+    position: relative;
+    height: 120%;
+    width: 450px;
+    margin: 0 auto;
+}
+
+
+.signin a {
+    color: #e7f6ff;
+    border-bottom: 1px;
+    margin-top: -3px;
+    padding-bottom: 2px;
+}
+
+.signin-box label a {
+    /*忘记密码？漂浮在右边*/
+    float: right;
+    text-decoration-line:none;
+}
+.signin-box label a:hover
+{
+    text-decoration-line:underline;
+}
+
+.signin * {
+    box-sizing: border-box;
+}
+
+.signin-brand {
+    /*logo*/
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto -50px auto;
+    border-radius: 30%;   /*logo外的圆角边框*/
+    box-shadow: 0 4px 40px rgba(0, 0, 0, .07);
+    padding: 10px;
+    background-color: #fff;
+    z-index: 1;  /*堆叠顺序设置*/
+    position: relative;
+}
+
+.signin-brand img {
+    width: 100%;
+}
+
+.signin-box {
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.signin-box-inner {
+    background-color: #C20c0c;
+    /*background-color: #ff002a;*/
+    box-shadow: 0 7px 25px rgba(0, 0, 0, .08);
+    padding: 90px 25px 45px 25px;
+    text-align: left;
+    border-radius: 15px;
+
+}
+
+
+.signin-box p {
+    /*管理员登录*/
+    color: #e7f6ff;
+    font-weight: 700;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.signin-box .signin-group {
+    margin-bottom: 30px;
+}
+
+.signin-box label {
+    /*标签*/
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 100%;
+    color:#e7f6ff;
+    font-weight: 700;
+}
+
+
+
+.signin-box .signin-input {
+    /*两个输入框*/
+    background-color: #f5f8ff;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    width: 100%;
+    outline: 0;
+}
+
+.signin-box .signin-btn {
+    /*登录按钮*/
+    display: inline-block;
+    width: 100%;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #2ba7d6;
+    box-shadow: #aac8d6;
+    font-weight: 700;
+    margin-top: 20px;
+    outline: 0;
+    cursor: pointer; /*悬浮此处时更改光标类型*/
+}
+.signin-box .signin-btn:hover
+{
+    background-color: #80d0f2;
+}

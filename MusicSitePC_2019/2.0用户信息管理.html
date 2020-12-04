@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云音乐后台管理系统</title>
+    <link rel="stylesheet" href="Currency.css">
+    <style>
+
+        #hor-minimalist-a
+        {
+            position: relative;
+            left: 3%;
+            top: 30px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 18px;
+
+            width: 1600px;
+            border-collapse: collapse;
+            text-align: left;
+            box-shadow: 10px 10px 5px #888888;
+
+        }
+        #hor-minimalist-a th
+        {
+            font-size: 22px;
+            font-weight: normal;
+            color: #ffffff;
+            padding: 10px 8px;
+            border-bottom: 2px solid #6678b1;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+        #hor-minimalist-a td
+        {
+            color: #669;
+            padding: 9px 8px 0px 8px;
+            border-bottom: 1px solid #9da3a6;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        #hor-minimalist-a tbody tr:hover td
+        {
+            color: #383b3e;
+        }
+
+        #pageTitle{//
+            position: relative;
+            width: 90%;
+        }
+        #underMenu{
+            background-color: #cc0600;
+            position: relative;
+            top: 50px;
+            left: 3%;
+            height: 50px;
+            width: 1600px;
+            display: flex;
+        }
+        .page{
+            display: flex;
+            color: #FEFEFE;
+            position: relative;
+            top: 16px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        #idForm{
+            position: relative;
+            left: 7%;
+        }
+        #splitHr{
+            position: relative;
+            top: 45px
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div id="logo">
+            <img alt="云音乐logo" id = title_logo src="Images/logo.png">
+            <h1 id = title_name>云音乐</h1>
+        </div>
+        <div id="top">
+            <div id="User-img"><img src="Images/yonghu%20(1).svg" height="25px" width="25px"></div>
+            <div id="User">Admin<img src="Images/bottom.svg" height="20px" width="20px"></div>
+            <div id="User-img1">消息</div>
+            <div id="User-img2"><img src="Images/xiaoxi.svg" height="25px" width="25px"></div>
+
+        </div>
+    </div>
+<!--    <div id="title2"></div>-->
+    <div id="article">
+        <div id="menu">
+            <div id="help-left">
+                <ul class="nav1" id="help-left-ul">
+                    <li class="li1" id="menu-div1"><a href="2.0后台主页.html"><img src="Images/zhuye.svg" height="20px" width="20px">主页</a></li>
+                    <li class="li1" id="menu-div2">
+                        <a href="#"><img src="Images/yonghu%20(2).svg" height="20px" width="20px">用户管理<img id="li1-img" src="Images/xiangyou.svg" height="10px" width="10px" ></a>
+                        <ul class="nav2">
+                            <li class="li2"><a href="2.0用户信息管理.html">用户信息管理</a></li>
+                            <li class="li2"><a href="2.0用户浏览维护.html">用户浏览数据</a></li>
+                        </ul>
+                    </li>
+                    <li class="li1" id="menu-div3"><a href="2.0资讯内容审核.html"><img src="Images/zixun.svg" height="20px" width="20px">资讯管理</a></li>
+                    <li class="li1" id="menu-div4"><a href="List.html"><img src="Images/bangdan.svg" height="20px" width="20px">榜单管理</a></li>
+                    <li class="li1" id="menu-div5"><a href="Comment.html"><img src="Images/pinglun.svg" height="20px" width="20px">评论管理</a></li>
+                    <li class="li1" id="menu-div6"><a href="#"><img src="Images/lianxi.svg" height="20px" width="20px">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Main_content">
+            <div id="pageTitle">
+                <h2>用户管理</h2>
+            </div>
+            <table id="hor-minimalist-a" style=" border-radius: 10px;">
+                <thead style="text-align:center;vertical-align:middle;">
+                <tr>
+                    <th width="150">姓名</th>
+                    <th width="150">电话</th>
+                    <th width="50">年龄</th>
+                    <th width="100">其他信息</th>
+                    <th width="100">账号状态</th>
+                    <th width="100">组别</th>
+                    <th width="100">删除</th>
+                    <th width="100">修改</th>
+                    <th width="150">在线时长</th>
+                </tr>
+                </thead>
+                <tbody style="text-align:center;vertical-align:middle;">
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td><button>查看</button></td>
+                    <td>
+                        <form>
+                            <label for="ban">禁用</label>
+                            <input type="radio" name="1" id="1" value="ban"><br>
+                        </form>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="user">普通用户</option>
+                            <option value="vip">普通会员</option>
+                            <option value="supervip">超级会员</option>
+                        </select>
+                    </td>
+                    <td><button>删除</button></td>
+                    <td><button>修改</button></td>
+                    <td><input type="text"></td>
+                </tr>
+                </tbody>
+            </table>
+            <hr id="splitHr">
+            <div id="underMenu">
+                <div class="page">
+                    <a href="#">上一页</a>
+                </div>
+                <div class="page">
+                    <p>当前在第</p>
+                </div>
+                <div class="page">
+                    <a href="#">1</a>
+                </div>
+                <div class="page">
+                    <p>页</p>
+                </div>
+                <div class="page">
+                    <p>(共100页)</p>
+                </div>
+                <div class="page">
+                    <a href="#">下一页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

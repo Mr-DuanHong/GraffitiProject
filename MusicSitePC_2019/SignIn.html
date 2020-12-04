@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="Sign.css">
+    <script>
+        window.onload = function () {
+            document.getElementById("IdSignin").onclick=function () {
+                VerPassword();
+            }
+        }
+
+        function VerPassword() {
+            var a=document.getElementById("Idsignin-input").value, b=document.getElementById("Passwordsignin-input").value;
+            if(a == '' || a == undefined || a == null)   //除了字符串的空，还有另外两种情况要考虑。
+            {
+                alert("请输入账号！")
+            }
+            else if(a == '' || a == undefined || a == null)
+            {
+                alert("请输入密码！")
+            }
+            else if(a == "wangyiyun"&&b == "123456")
+            {
+                window.location.href = '2.0后台主页.html';
+            }
+            else
+            {
+                alert("请输入正确的账号或密码！")
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="signin">
+    <div class="signin-brand">
+        <img src="logo.png" alt="logo">
+    </div>
+    <div class="signin-wrapper">
+        <div class="signin-box signin-login">
+            <div class="signin-box-inner">
+                <!--表单来创建账号栏、密码栏和相关按钮-->
+                <form>
+                    <p>管理员登录</p>
+                    <div class="signin-group">
+                        <label>管理员账号</label>
+                        <input type="email" name="email" class="signin-input" id="Idsignin-input">
+                    </div>
+                    <div class="signin-group password-group">
+                        <label>密码<a href="Password.html" class="forgot-link">忘记密码？</a></label>
+                        <input type="password" name="password" class="signin-input" id="Passwordsignin-input">
+                    </div>
+
+                </form>
+                <button class="signin-btn login-btn" id="IdSignin">   <!--这个Button是触发网页跳转的媒介（点击后账号密码正确就跳转），但是如果放到<form>中就不会跳转-->
+                    登录
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云音乐后台管理系统</title>
+    <link rel="stylesheet" href="Currency.css">
+    <style>
+        #Main_content{/*右下主内容区*/
+            height:1190px;
+            width:100%;
+            background-color: #F5F5F5;
+        }
+        #comment1{
+            width:80%;
+            margin:0 10% 0 10%;
+        }
+        table{
+            border-collapse: collapse;
+            width:100%;
+            table-layout:fixed;
+            border-left:#dbdbdb 1px solid;
+            border-right:#dbdbdb 1px solid;
+            border-bottom:#dbdbdb 1px solid;
+            border-top: #C20c0c 3px solid;
+            background-color: #ffffff;
+
+        }
+        #tablediv{
+            height:1000px;
+        }
+        table .tr1{
+
+            background-color: #F7F7F7;
+
+         }
+        table th{
+            border: #d3d3d3 1px solid;
+            height:40px;
+            padding-left:10px;
+            text-align:left;
+            font-size:12px;
+            font-weight:normal;
+            color:#525252;
+            background-image: linear-gradient(#fbfbfb, #efefef);
+        }
+        table td{
+            height:30px;
+            font-size:10px;
+            padding:2px 0 2px 10px;
+        }
+        table .tr2{
+            background-color: #FFFFFF;
+        }
+        /*翻页*/
+        #pagebar{
+            text-align:right;
+            margin-top:20px;
+            padding-bottom: 20px;
+        }
+        #pagebar a{
+            font-size:1em;
+            text-decoration:none;
+            color: #000000;
+            background-color:#cad8e0;
+            display:inline-block;width:25px;height:25px;
+            text-align:center;
+            transition:all 0.5s ease;
+            padding-top:3px;
+        }
+        #pagebar a:hover{z-index:100;opacity:0.5;transform:scale(1.1);}
+        #pagebar .arrow{width:60px;}
+        .piclist #piclist-id{display:flex;margin-left:-20px;} /*flex，弹性伸缩盒布局*/
+
+        /*按钮、搜索*/
+        .Comment_table_td_button{
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            height:20px;
+            width:50px;
+            font-size:5px;
+            color: black;
+            border: 2px solid #d3d3d3;
+            margin-left:5px;
+            border-radius:3px;
+        }
+        .Comment_table_td_button1{
+            background-color: #F7F7F7;
+        }
+        .Comment_table_td_button2{
+            background-color: white;
+        }
+        .Comment_table_td_button:hover{
+            background-color: #C20c0c;
+            color: white;
+        }
+        div .button1{
+            margin: 18px 0 20px 20px;
+            display: inline-block;
+            padding: 5px 25px;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #C20c0c;
+            border: none;
+            border-radius: 5px;
+        }
+        div .button1:hover {
+            opacity: 0.7;
+        }
+        div .button1:active {  /*点击时激活*/
+            background-color: #C20c0c;
+            transform: translateY(4px);
+        }
+        #search{
+            margin:18px 0 20px 35%;
+        }
+        #search-submit{
+            display: inline-block;
+            padding: 5px 25px;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #C20c0c;
+            border: none;
+            border-radius: 5px;
+        }
+        #search-submit:hover {
+            opacity: 0.7;
+        }
+        #search-submit:active {  /*点击时激活*/
+            background-color: #C20c0c;
+            transform: translateY(4px);
+        }
+        #search-search{
+            font-size:15px;
+            padding:2.5px 0 2.5px 5px;
+            border: 4px solid #C20c0c;
+        }
+        .crumb-nav{
+            margin: 0 0 0 0;
+            font-size:20px;
+        }
+    </style>
+    <script>
+        function deleteRow(r)
+        {
+            var i=r.parentNode.parentNode.rowIndex;
+            document.getElementById('CommentTable').deleteRow(i);
+        }
+        function Adopt(r) {
+            var i=r.parentNode.parentNode.rowIndex;
+            document.getElementById('CommentTable').rows[i].cells[4].innerHTML = '已通过';
+        }
+        function Reject(r)
+        {
+            var i=r.parentNode.parentNode.rowIndex;
+            document.getElementById('CommentTable').rows[i].cells[4].innerHTML = '未通过';
+        }
+
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div id="logo">
+            <img alt="云音乐logo" id = title_logo src="Images/logo.png">
+            <h1 id = title_name>云音乐</h1>
+        </div>
+        <div id="top">
+            <div id="User-img"><img src="Images/yonghu%20(1).svg" height="25px" width="25px"></div>
+            <div id="User">Hua<img src="Images/bottom.svg" height="20px" width="20px"></div>
+            <div id="User-img1">消息</div>
+            <div id="User-img2"><img src="Images/xiaoxi.svg" height="25px" width="25px"></div>
+
+        </div>
+    </div>
+<!--    <div id="title2"></div>-->
+    <div id="article">
+        <div id="menu">
+            <div id="help-left">
+                <ul class="nav1" id="help-left-ul">
+                    <li class="li1" id="menu-div1"><a href="2.0后台主页.html"><img src="Images/zhuye.svg" height="20px" width="20px">主页</a></li>
+                    <li class="li1" id="menu-div2">
+                        <a href="#"><img src="Images/yonghu%20(2).svg" height="20px" width="20px">用户管理<img id="li1-img" src="Images/xiangyou.svg" height="10px" width="10px" ></a>
+                        <ul class="nav2">
+                            <li class="li2"><a href="2.0用户信息管理.html">用户信息管理</a></li>
+                            <li class="li2"><a href="2.0用户浏览维护.html">用户浏览数据</a></li>
+                        </ul>
+                    </li>
+                    <li class="li1" id="menu-div3"><a href="2.0资讯内容审核.html"><img src="Images/zixun.svg" height="20px" width="20px">资讯管理</a></li>
+                    <li class="li1" id="menu-div4"><a href="List.html"><img src="Images/bangdan.svg" height="20px" width="20px">榜单管理</a></li>
+                    <li class="li1" id="menu-div5"><a href="Comment.html"><img src="Images/pinglun.svg" height="20px" width="20px">评论管理</a></li>
+                    <li class="li1" id="menu-div6"><a href="#"><img src="Images/lianxi.svg" height="20px" width="20px">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Main_content">
+            <article id="comment1">
+                <section class="crumb-nav">评论审核</section>
+                <section class="piclist">
+                    <div id="piclist-id">
+                        <div><button class="button1" id="AllTable">全部</button></div>
+                        <script>  <!--筛选全部-->
+                        document.getElementById("AllTable").onclick = function () {
+                            var storeId = document.getElementById('CommentTable');//获取table的id标识
+                            var rowsLength = storeId.rows.length;//表格总共有多少行
+                            var searchCol = 4;//要搜索的哪一列，这里是第一列，从0开始数起
+                            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                                var searchText = storeId.rows[i].cells[searchCol].innerHTML;//取得table行，列的值
+                                if (searchText.match("")) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                                    storeId.rows[i].style.display = '';//显示行操作，
+                                } else {
+                                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                                }
+                            }
+                        }
+                        </script>
+                        <div><button class="button1" id="Wait">待审核</button></div>
+                        <script>  <!--筛选已审核-->
+                        document.getElementById("Wait").onclick = function () {
+                            var storeId = document.getElementById('CommentTable');//获取table的id标识
+                            var rowsLength = storeId.rows.length;//表格总共有多少行
+                            var searchCol = 4;//要搜索的哪一列，这里是第一列，从0开始数起
+                            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                                var searchText = storeId.rows[i].cells[searchCol].innerHTML;//取得table行，列的值
+                                if (searchText.match("待审核")) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                                    storeId.rows[i].style.display = '';//显示行操作，
+                                } else {
+                                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                                }
+                            }
+                        }
+                        </script>
+                        <div><button class="button1" id="Have_passed" >已通过</button></div>
+                        <script>  <!--筛选已通过-->
+                        document.getElementById("Have_passed").onclick = function () {
+                            var storeId = document.getElementById('CommentTable');//获取table的id标识
+                            var rowsLength = storeId.rows.length;//表格总共有多少行
+                            var searchCol = 4;//要搜索的哪一列，这里是第一列，从0开始数起
+                            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                                var searchText = storeId.rows[i].cells[searchCol].innerHTML;//取得table行，列的值
+                                if (searchText.match("已通过")) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                                    storeId.rows[i].style.display = '';//显示行操作，
+                                } else {
+                                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                                }
+                            }
+                        }
+                        </script>
+                        <div><button class="button1" id="Not_pass" >未通过</button></div>
+                        <script>  <!--筛选未通过-->
+                        document.getElementById("Not_pass").onclick = function () {
+                            var storeId = document.getElementById('CommentTable');//获取table的id标识
+                            var rowsLength = storeId.rows.length;//表格总共有多少行
+                            var searchCol = 4;//要搜索的哪一列，这里是第一列，从0开始数起
+                            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                                var searchText = storeId.rows[i].cells[searchCol].innerHTML;//取得table行，列的值
+                                if (searchText.match("未通过")) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                                    storeId.rows[i].style.display = '';//显示行操作，
+                                } else {
+                                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                                }
+                            }
+                        }
+                        </script>
+                        <div><button class="button1" id="MGCSH">敏感词审核</button></div>
+                        <script>  <!--筛选敏感词-->
+                        document.getElementById("MGCSH").onclick = function () {
+                            var storeId = document.getElementById('CommentTable');//获取table的id标识
+                            var rowsLength = storeId.rows.length;//表格总共有多少行
+                            var searchCol = 2;//要搜索的哪一列，这里是第一列，从0开始数起
+                            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                                var searchText = storeId.rows[i].cells[searchCol].innerHTML;//取得table行，列的值
+                                if (searchText.match("%&*")) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                                    storeId.rows[i].style.display = '';//显示行操作，
+                                } else {
+                                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                                }
+                            }
+                        }
+                        </script>
+                        <div id="search">
+                            <div>
+                                <input id="search-search" type="search" placeholder="请输入...."><button id= "search-submit" >搜索</button>
+                            </div>
+                        </div>
+                        <script>  <!--搜索-->
+                        document.getElementById("search-submit").onclick = function () {
+                            var storeId = document.getElementById('CommentTable');//获取table的id标识
+                            var searchContent = document.getElementById('search-search').value;
+                            var rowsLength = storeId.rows.length;//表格总共有多少行
+                            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                                var searchText0 = storeId.rows[i].cells[0].innerHTML;//取得table行，列的值
+                                var searchText1 = storeId.rows[i].cells[1].innerHTML;//取得table行，列的值
+                                var searchText2 = storeId.rows[i].cells[2].innerHTML;//取得table行，列的值
+                                var searchText3 = storeId.rows[i].cells[3].innerHTML;//取得table行，列的值
+                                var searchText4 = storeId.rows[i].cells[4].innerHTML;//取得table行，列的值
+                                var searchText5 = storeId.rows[i].cells[5].innerHTML;//取得table行，列的值
+                                if (searchText0.match(searchContent) ||searchText1.match(searchContent)||searchText2.match(searchContent)||searchText3.match(searchContent)||searchText4.match(searchContent)||searchText5.match(searchContent) ) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                                    storeId.rows[i].style.display = '';//显示行操作，
+                                } else {
+                                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                                }
+                            }
+                        }
+                        </script>
+                    </div>
+                    <div id="tablediv">
+                        <table id="CommentTable">
+                            <thead>
+                            <tr class="tr3">
+                                <th  width="15%">位置</th>
+                                <th width="10%">ID</th>
+                                <th  width="47%">评论内容</th>
+                                <th  width="8%">评论时间</th>
+                                <th  width="5%">审核状态</th>
+                                <th width="15%">操作栏</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr1" id="trId1">
+                                <td class="Comment_table_td_address">云音乐飙升榜</td>
+                                <td class="Comment_table_td_ID" >-xszpqy-</td>
+                                <td class="Comment_table_td_content" >这么美的歌词 为什么越听越难过....</td>
+                                <td class="Comment_table_td_time" >[11-22 09:37]</td>
+                                <td class="Comment_table_td_state YN" >已通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_td_address">抖音排行榜</td>
+                                <td class="Comment_table_td_ID">杠精A</td>
+                                <td class="Comment_table_td_content">%&*^()&()*)_(&^&$#%^#^*_(</td>
+                                <td class="Comment_table_td_time">[11-21 11:44]</td>
+                                <td class="Comment_table_td_state YN">未通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC"  onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">隔壁老樊c</td>
+                                <td class="Comment_table_td_content">我在贩卖日光 你能不能来我身旁</td>
+                                <td class="Comment_table_td_time">[08-16 00:05]</td>
+                                <td class="Comment_table_td_state YN">待审核</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">枯木逢春夏秋冬</td>
+                                <td class="Comment_table_td_content">遗憾的是在这一生里，我已经错过了你，也错过了关于你的风景！</td>
+                                <td class="Comment_table_td_time">[08-21 10:41]</td>
+                                <td class="Comment_table_td_state YN">已通过</td>
+                                <td >
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_td_address">云音乐飙升榜</td>
+                                <td class="Comment_table_td_ID" >-xszpqy-</td>
+                                <td class="Comment_table_td_content" >这么美的歌词 为什么越听越难过....</td>
+                                <td class="Comment_table_td_time" >[11-22 09:37]</td>
+                                <td class="Comment_table_td_state YN" >已通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_td_address">抖音排行榜</td>
+                                <td class="Comment_table_td_ID">杠精A</td>
+                                <td class="Comment_table_td_content">%&*^()&()*)_(&^&$#%^#^*_(</td>
+                                <td class="Comment_table_td_time">[11-21 11:44]</td>
+                                <td class="Comment_table_td_state YN">待审核</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">隔壁老樊c</td>
+                                <td class="Comment_table_td_content">我在贩卖日光 你能不能来我身旁</td>
+                                <td class="Comment_table_td_time">[08-16 00:05]</td>
+                                <td class="Comment_table_td_state YN">未通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">枯木逢春夏秋冬</td>
+                                <td class="Comment_table_td_content">遗憾的是在这一生里，我已经错过了你，也错过了关于你的风景！</td>
+                                <td class="Comment_table_td_time">[08-21 10:41]</td>
+                                <td class="Comment_table_td_state YN">已通过</td>
+                                <td >
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)" >通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_td_address">云音乐飙升榜</td>
+                                <td class="Comment_table_td_ID" >-xszpqy-</td>
+                                <td class="Comment_table_td_content" >这么美的歌词 为什么越听越难过....</td>
+                                <td class="Comment_table_td_time" >[11-22 09:37]</td>
+                                <td class="Comment_table_td_state YN" >已通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_td_address">抖音排行榜</td>
+                                <td class="Comment_table_td_ID">杠精A</td>
+                                <td class="Comment_table_td_content">%&*^()&()*)_(&^&$#%^#^*_(</td>
+                                <td class="Comment_table_td_time">[11-21 11:44]</td>
+                                <td class="Comment_table_td_state YN">未通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC"  onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">隔壁老樊c</td>
+                                <td class="Comment_table_td_content">我在贩卖日光 你能不能来我身旁</td>
+                                <td class="Comment_table_td_time">[08-16 00:05]</td>
+                                <td class="Comment_table_td_state YN">待审核</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">枯木逢春夏秋冬</td>
+                                <td class="Comment_table_td_content">遗憾的是在这一生里，我已经错过了你，也错过了关于你的风景！</td>
+                                <td class="Comment_table_td_time">[08-21 10:41]</td>
+                                <td class="Comment_table_td_state YN">已通过</td>
+                                <td >
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_td_address">云音乐飙升榜</td>
+                                <td class="Comment_table_td_ID" >-xszpqy-</td>
+                                <td class="Comment_table_td_content" >这么美的歌词 为什么越听越难过....</td>
+                                <td class="Comment_table_td_time" >[11-22 09:37]</td>
+                                <td class="Comment_table_td_state YN" >已通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_td_address">抖音排行榜</td>
+                                <td class="Comment_table_td_ID">杠精A</td>
+                                <td class="Comment_table_td_content">%&*^()&()*)_(&^&$#%^#^*_(</td>
+                                <td class="Comment_table_td_time">[11-21 11:44]</td>
+                                <td class="Comment_table_td_state YN">待审核</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">隔壁老樊c</td>
+                                <td class="Comment_table_td_content">我在贩卖日光 你能不能来我身旁</td>
+                                <td class="Comment_table_td_time">[08-16 00:05]</td>
+                                <td class="Comment_table_td_state YN">未通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">枯木逢春夏秋冬</td>
+                                <td class="Comment_table_td_content">遗憾的是在这一生里，我已经错过了你，也错过了关于你的风景！</td>
+                                <td class="Comment_table_td_time">[08-21 10:41]</td>
+                                <td class="Comment_table_td_state YN">已通过</td>
+                                <td >
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)" >通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_td_address">云音乐飙升榜</td>
+                                <td class="Comment_table_td_ID" >-xszpqy-</td>
+                                <td class="Comment_table_td_content" >这么美的歌词 为什么越听越难过....</td>
+                                <td class="Comment_table_td_time" >[11-22 09:37]</td>
+                                <td class="Comment_table_td_state YN" >已通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_td_address">抖音排行榜</td>
+                                <td class="Comment_table_td_ID">杠精A</td>
+                                <td class="Comment_table_td_content">%&*^()&()*)_(&^&$#%^#^*_(</td>
+                                <td class="Comment_table_td_time">[11-21 11:44]</td>
+                                <td class="Comment_table_td_state YN">未通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC"  onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">隔壁老樊c</td>
+                                <td class="Comment_table_td_content">我在贩卖日光 你能不能来我身旁</td>
+                                <td class="Comment_table_td_time">[08-16 00:05]</td>
+                                <td class="Comment_table_td_state YN">待审核</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">枯木逢春夏秋冬</td>
+                                <td class="Comment_table_td_content">遗憾的是在这一生里，我已经错过了你，也错过了关于你的风景！</td>
+                                <td class="Comment_table_td_time">[08-21 10:41]</td>
+                                <td class="Comment_table_td_state YN">已通过</td>
+                                <td >
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_td_address">云音乐飙升榜</td>
+                                <td class="Comment_table_td_ID" >-xszpqy-</td>
+                                <td class="Comment_table_td_content" >这么美的歌词 为什么越听越难过....</td>
+                                <td class="Comment_table_td_time" >[11-22 09:37]</td>
+                                <td class="Comment_table_td_state YN" >已通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_td_address">抖音排行榜</td>
+                                <td class="Comment_table_td_ID">杠精A</td>
+                                <td class="Comment_table_td_content">%&*^()&()*)_(&^&$#%^#^*_(</td>
+                                <td class="Comment_table_td_time">[11-21 11:44]</td>
+                                <td class="Comment_table_td_state YN">待审核</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">隔壁老樊c</td>
+                                <td class="Comment_table_td_content">我在贩卖日光 你能不能来我身旁</td>
+                                <td class="Comment_table_td_time">[08-16 00:05]</td>
+                                <td class="Comment_table_td_state YN">未通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">枯木逢春夏秋冬</td>
+                                <td class="Comment_table_td_content">遗憾的是在这一生里，我已经错过了你，也错过了关于你的风景！</td>
+                                <td class="Comment_table_td_time">[08-21 10:41]</td>
+                                <td class="Comment_table_td_state YN">已通过</td>
+                                <td >
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)" >通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_td_address">云音乐飙升榜</td>
+                                <td class="Comment_table_td_ID" >-xszpqy-</td>
+                                <td class="Comment_table_td_content" >这么美的歌词 为什么越听越难过....</td>
+                                <td class="Comment_table_td_time" >[11-22 09:37]</td>
+                                <td class="Comment_table_td_state YN" >已通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_td_address">抖音排行榜</td>
+                                <td class="Comment_table_td_ID">杠精A</td>
+                                <td class="Comment_table_td_content">%&*^()&()*)_(&^&$#%^#^*_(</td>
+                                <td class="Comment_table_td_time">[11-21 11:44]</td>
+                                <td class="Comment_table_td_state YN">未通过</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC"  onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr1">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">隔壁老樊c</td>
+                                <td class="Comment_table_td_content">我在贩卖日光 你能不能来我身旁</td>
+                                <td class="Comment_table_td_time">[08-16 00:05]</td>
+                                <td class="Comment_table_td_state YN">待审核</td>
+                                <td>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td class="Comment_table_address">《这一生关于你的风景》</td>
+                                <td class="Comment_table_td_ID">枯木逢春夏秋冬</td>
+                                <td class="Comment_table_td_content">遗憾的是在这一生里，我已经错过了你，也错过了关于你的风景！</td>
+                                <td class="Comment_table_td_time">[08-21 10:41]</td>
+                                <td class="Comment_table_td_state YN">已通过</td>
+                                <td >
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_TG" onclick="Adopt(this)">通过</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button1 Comment_table_td_button Comment_table_td_button_BH" onclick="Reject(this)">驳回</button>
+                                    <button class="Comment_table_td_button Comment_table_td_button2 Comment_table_td_button Comment_table_td_button_SC" onclick="deleteRow(this)">删除</button>
+                                </td>
+                            </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pagebar">
+                        <a href="#" class="arrow">上一页</a>
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">7</a>
+                        <a href="#">8</a>
+                        <a href="#">9</a>
+                        <a href="#" class="arrow">下一页</a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

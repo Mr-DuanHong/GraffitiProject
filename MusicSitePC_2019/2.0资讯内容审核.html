@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云音乐后台管理系统</title>
+    <link rel="stylesheet" href="Currency.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style>
+        .li1 img{
+            padding-top:10px;
+            padding-right:10px;
+        }
+        #show_tbody input{
+            position: relative;
+            width: 80%;
+        }
+        #xztb textarea{
+            position: relative;
+            width: 215px;
+            left: -30px;
+        }
+        #title_name{
+            position: center;
+            top: -27px;
+        }
+        #underMenu{
+            position: relative;
+            right: 35%;
+        }
+        #underMenu a{
+            background-color: #c80d00;
+            color: #ffffff;
+        }
+        #underMenu a:hover{
+            background-color: #e6a366;
+            color: #ffffff;
+        }
+    </style>
+
+
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div id="logo">
+            <img alt="云音乐logo" id = title_logo src="Images/logo.png">
+            <h1 id = title_name>云音乐</h1>
+        </div>
+        <div id="top">
+            <div id="User-img"><img src="Images/yonghu%20(1).svg" height="25px" width="25px"></div>
+            <div id="User">Admin<img src="Images/bottom.svg" height="20px" width="20px"></div>
+            <div id="User-img1">消息</div>
+            <div id="User-img2"><img src="Images/xiaoxi.svg" height="25px" width="25px"></div>
+        </div>
+    </div>
+    <div id="article">
+        <div id="menu">
+            <div id="help-left">
+                <ul class="nav1" id="help-left-ul">
+                    <li class="li1" id="menu-div1"><a href="2.0后台主页.html"><img src="Images/zhuye.svg" height="20px" width="20px">主页</a></li>
+                    <li class="li1" id="menu-div2">
+                        <a href="#"><img src="Images/yonghu%20(2).svg" height="20px" width="20px">用户管理<img id="li1-img" src="Images/xiangyou.svg" height="10px" width="10px" ></a>
+                        <ul class="nav2">
+                            <li class="li2"><a href="2.0用户信息管理.html">用户信息管理</a></li>
+                            <li class="li2"><a href="2.0用户浏览维护.html">用户浏览数据</a></li>
+                        </ul>
+                    </li>
+                    <li class="li1" id="menu-div3"><a href="2.0资讯内容审核.html"><img src="Images/zixun.svg" height="20px" width="20px">资讯管理</a></li>
+                    <li class="li1" id="menu-div4"><a href="List.html"><img src="Images/bangdan.svg" height="20px" width="20px">榜单管理</a></li>
+                    <li class="li1" id="menu-div5"><a href="Comment.html"><img src="Images/pinglun.svg" height="20px" width="20px">评论管理</a></li>
+                    <li class="li1" id="menu-div6"><a href="#"><img src="Images/lianxi.svg" height="20px" width="20px">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Main_content">
+            <div id="content1">
+                <div class="box">
+                    <div class="content">
+                        <h4>资讯管理</h2>
+                        <!--搜索输入框及查询、重置按钮-->
+                        <div class="container content_width">
+                            <div class="person_search">
+                                <div class="search_input">
+                                    <div class="input-group mb-3">
+                                        <span>推送人：</span>
+                                        <input id="Ktext" type="text" class="form-control" placeholder="请输入推送人昵称">
+                                    </div>
+                                </div>
+                                <div class="search_input">
+                                    <div class="input-group mb-3" hidden>
+                                        <span>资讯编号：</span>
+                                        <input id="job_num" type="text" class="form-control" placeholder="请输入资讯编号">
+                                    </div>
+                                </div>
+                                <div class="search_input">
+                                    <button class="btn btn-primary search_btn" type="button" id="search_btn">查询</button>
+                                    <button class="btn btn-primary search_btn" type="button" id="back_btn">重置</button>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <!--添加按钮及bootstrap的模态框-->
+                        <div class="export">
+                            <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#renyuan">
+                                <img src="img/add_two.png">
+                                <span>添加</span>
+                            </button>
+                            <div class="modal fade" id="renyuan">
+                                <div class="modal-dialog modal-lg modal_position">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">添加</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table id="xztb" class="table">
+                                                <!--新修改弹窗的样式-->
+                                                <tbody>
+                                                <tr>
+                                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>推送人</label>
+                                                    </td>
+                                                    <td><input class="userName" type="text" placeholder="请输入评论人昵称"></td>
+                                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>资讯编号</label>
+                                                    </td>
+                                                    <td><input class="jobNum" type="number" placeholder="请输入评论编号"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>手机号</label>
+                                                    </td>
+                                                    <td><input class="phoneNum" type="number" placeholder="请输入手机号"></td>
+                                                    <td class="tb_bg"><label for="">相关歌曲</label></td>
+                                                    <td><input type="text" placeholder="请输入相关歌曲"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tb_bg"><label for="">资讯内容</label></td>
+                                                    <td>
+                                                        <label class="contact" style="width: 160px">
+                                                            <textarea name="content" id="content" cols="20" rows="3" class="contact-input" data-value=""></textarea>
+                                                        </label>
+                                                    </td>
+                                                    <td class="tb_bg"><label for="">账户类型</label></td>
+                                                    <td>
+                                                        <select class="form-control select_down" style="font-size: 13px; color: #666;">
+                                                            <option>普通用户</option>
+                                                            <option>会员用户</option>
+                                                            <option>专栏编辑</option>
+                                                            <option>原创音乐人</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                            <button id="add_btn" type="button" class="btn btn-secondary">确定</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--表格列表-->
+                        <table id="tb" class="table">
+                            <thead>
+                            <tr>
+                                <th>推送人</th>
+                                <th>资讯编号</th>
+                                <th>手机号</th>
+                                <th>相关歌曲</th>
+                                <th>账户类型</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="show_tbody">
+                            <tr>
+                                <td>金正恩</td>
+                                <td>0002333</td>
+                                <td>18086667777</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>马英九</td>
+                                <td>0002334</td>
+                                <td>18086668888</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>爱格伯特</td>
+                                <td>0002335</td>
+                                <td>18086668889</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>埃塞尔沃夫</td>
+                                <td>0002336</td>
+                                <td>18086668890</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>埃塞尔巴德</td>
+                                <td>0002337</td>
+                                <td>18086668891</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>埃塞尔伯特</td>
+                                <td>0002338</td>
+                                <td>18086668892</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>埃塞尔烈德一世</td>
+                                <td>0002339</td>
+                                <td>18086668893</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>阿尔弗雷德大帝</td>
+                                <td>0002340</td>
+                                <td>18086668894</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>长者爱德华</td>
+                                <td>0002341</td>
+                                <td>18086668895</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>埃塞尔斯坦</td>
+                                <td>0002342</td>
+                                <td>18086668896</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>爱德蒙</td>
+                                <td>0002343</td>
+                                <td>18086668897</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr><tr>
+                                <td>爱德瑞德</td>
+                                <td>0002344</td>
+                                <td>18086668898</td>
+                                <td>我和我的祖国</td>
+                                <td>会员用户</td>
+                                <td>
+                                    <a href="#" class="edit">编辑</a>
+                                    <a href="#" class="del">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div id="underMenu">
+                            <div class="page">
+                                <a href="#">上一页</a>
+                            </div>
+                            <div class="page">
+                                <p>当前在第</p>
+                            </div>
+                            <div class="page">
+                                <a href="#">1</a>
+                            </div>
+                            <div class="page">
+                                <p>页</p>
+                            </div>
+                            <div class="page">
+                                <p>(共100页)</p>
+                            </div>
+                            <div class="page">
+                                <a href="#">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/mejs.js"></script>
+</body>
+</html>

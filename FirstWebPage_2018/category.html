@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动作冒险</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <!--<meta>标签的name属性，详见P30-->
+    <meta name="author" content="华弘毅">
+    <meta name="keywords" contents="交易,Hua'sGames，游戏">
+    <meta name="description" content="是一个个人分享、交易网站">
+    <meta name="generator" content="JetBrains WebStorm">
+    <meta name="robots" content="index,follow"><!--允许搜索机器人检索网页，可让robot/spider登录，页面上链接可被查询-->
+    <script type="text/javascript" src="main.js"></script>
+    <style>
+        .piclist ul{display:flex;margin-left:70px;} /*flex，弹性伸缩盒布局*/
+        .piclist li{text-align:center;margin:10px 5px;}
+        .piclist li img{
+            width:192px;
+            border-radius:10px;
+            transition:all 1s ease;
+            border:5px solid #000000;
+        }
+        .piclist li:nth-child(3n+1){margin-left:10px;}/*nth-child():选取属于其父元素的第3n+1个子元素的每个 <li> 元素：*/
+        .piclist li:nth-child(3n+3){margin-right:10px;}
+        .piclist li:hover img{transform:scale(1.1);}
+        /*分页导航*/
+        #pagebar{text-align:right;margin-top:10px;margin-right:10px;}
+        #pagebar a{
+            font-size:1.6em;
+            text-decoration:none;
+            color:#FFF;
+            background-color:#a05c39;
+            display:inline-block;width:25px;height:25px;
+            text-align:center;
+            transition:all 0.5s ease;
+            padding-top:3px;
+        }
+        #pagebar a:hover{z-index:100;opacity:0.5;transform:scale(1.1);}
+        #pagebar .arrow{width:60px;}
+    </style>
+</head>
+
+<body>
+<!--页眉-->
+<div id="hearer-wrapper">
+    <!--网站logo-->
+    <header class="container">
+        <div id="logo">
+            <a href="index.html"><h1>Hua's<span>Games</span></h1></a>
+        </div>
+        <div id="search">
+            <form action="index.html" method="get">
+                <input type="search" placeholder="站内搜索"><input type="submit" value="搜索">
+            </form>
+        </div>
+    </header>
+    <!--导航菜单-->
+    <div id="nav">
+        <nav class="container">
+            <ul>
+                <li><a class="color1" href="index.html">主页</a></li><li>
+                <a class="color2" href="index.html">本周推荐</a></li><li>
+                <a class="color3" href="index.html">游戏分类</a>
+                <ul id="ul3">
+                    <li><a href="#">动作冒险</a></li>
+                    <li><a href="#">角色扮演</a></li>
+                    <li><a href="#">即时战略</a></li>
+                    <li><a href="#">模拟经营</a></li>
+                    <li><a href="#">体育竞技</a></li>
+                </ul>
+            </li><li>
+                <a class="color4" href="gallery.html">画廊</a>
+            </li><li>
+                <a class="color5" href="index.html">今日阅读</a></li><li>
+                <a class="color6" href="contact.html">关于我们</a>
+                <ul id="ul2">
+                    <li><a href="contact.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </li>
+            </ul>
+            <div id="menu-logo">
+                <a href="cart.html">购物车</a>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!--图片切换广告-->
+<div id="adv">
+    <dl>
+        <dt>
+            <a href="#" id="a1">1</a>
+            <a href="#" id="a2">2</a>
+            <a href="#" id="a3">3</a>
+            <a href="#" id="a4">4</a>
+        </dt>
+        <dd><a href="#"><img src="images/1.jpg" id="badimg" alt="广告"></a></dd>
+    </dl>
+</div>
+<div id="jiange">
+
+</div>
+<!--内容-->
+<div id="content-wrapper">
+    <!--左边内容区-->
+    <article>
+        <!--面包屑导航-->
+        <section class="crumb-nav">您现在的位置：<a href="index.html">首页</a>&gt;&gt;游戏分类>>动作冒险</section>
+        <section class="piclist">
+            <h2 id="title8">动作冒险</h2>
+            <ul>
+                <li><a href="details.html"><img src="images/qq1.jpg"></a></li>
+                <li><a href="details.html"><img src="images/qq2.jpg"></a></li>
+                <li><a href="details.html"><img src="images/qq3.jpg"></a></li>
+                <li><a href="details.html"><img src="images/qq6.jpg"></a></li>
+            </ul>
+            <ul>
+                <li><a href="details.html"><img src="images/qq4.jpg"></a></li>
+                <li><a href="details.html"><img src="images/qq5.jpg"></a></li>
+                <li><a href="details.html"><img src="images/战地5.jpg"></a></li>
+                <li><a href="details.html"><img src="images/qq7.jpg"></a></li>
+            </ul>
+            <div id="pagebar">
+                <a href="#" class="arrow">上一页</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#" class="arrow">下一页</a>
+            </div>
+        </section>
+    </article><!--右边边栏区--><aside>
+    <!--显示时间-->
+    <div id="displaydate"></div><div id="displaytime"></div>
+    <!--登录区-->
+    <div id="qingdenglu"><h3>请登录</h3></div>
+    <div id="denglu">
+        <form action="" method="get">
+            <label id="label1"><div id="username1"><img src="tubiao/yonghuming.png" id="img-yonghuming" alt=""></div><input type="text" name="name" id="username"  placeholder="Username..."></label><br>
+            <label id="label2"><div id="passwird1"><img src="tubiao/mima.png" id="img-mima" alt=""></div><input type="password" name="password" id="password" placeholder="Password..."></label><br>
+            <label id="jizhumima"><input type="checkbox" name="jiyi" value="记住我的密码">记住我的密码</label><p>
+            <a href="#">忘记密码？</a>
+            <a href="#">注册</a>
+            <label id="id-denglu"><div id="div-denglu"><input type="image" src="images/denglu.png" alt="图像按钮" title="提交" name="image"/></div></label>
+        </form>
+    </div>
+    <div class="border"></div>
+    <!--最新热门游戏-->
+    <section id="best-selling">
+        <h2 id="title7">最新热门游戏</h2>
+        <ul>
+            <li><a class="selling" href="#">荒野大镖客：救赎2</a>
+                <div class="curr">
+                    <div class="p-img">
+                        <a title="荒野大镖客：救赎2" href="#"><img width="150" height="243" src="images/荒野大镖客.jpg"></a>
+                    </div>
+                    <div class="p-name">
+                        <a title="荒野大镖客：救赎2" href="#">荒野大镖客：救赎2</a>
+                        <strong>发售日期：<br>2018年10月26日（已发售）</strong>
+                    </div>
+                </div>
+            </li>
+            <li><a class="selling" href="#">精灵宝可梦 Let's Go</a>
+                <div class="curr">
+                    <div class="p-img">
+                        <a title="精灵宝可梦 Let's Go" href="#"><img width="150" height="243" src="images/pokemmo.JPG"></a>
+                    </div>
+                    <div class="p-name">
+                        <a title="精灵宝可梦 Let's Go" href="#">精灵宝可梦 Let's Go</a>
+                        <strong>发售日期：<br>2018年11月16日（已发售）</strong>
+                    </div>
+                </div>
+            </li>
+            <li><a class="selling" href="#">古剑奇谭3</a>
+                <div class="curr">
+                    <div class="p-img">
+                        <a title="古剑奇谭3" href="#"><img width="150" height="243" src="images/古剑奇谭3.PNG"></a>
+                    </div>
+                    <div class="p-name">
+                        <a title="古剑奇谭3" href="#">古剑奇谭3</a>
+                        <strong>发售日期：<br>2018年11月23日（已发售）</strong>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <div class="border"></div>
+    <!--游戏分类-->
+    <section class="aside-section">
+        <h2 id="title4">游戏分类</h2>
+        <ul>
+            <li><a href="category1.html">动作冒险</a></li>
+            <li><a href="category1.html">角色扮演</a></li>
+            <li><a href="category1.html">策略战旗</a></li>
+            <li><a href="category1.html">模拟经营</a></li>
+            <li><a href="category1.html">体育竞技</a></li>
+        </ul>
+    </section>
+    <!--其他游戏网站-->
+    <section class="aside-section">
+        <h2 id="title5">其他游戏网站</h2>
+        <ul>
+            <li><a href="#">STEAM</a></li>
+            <li><a href="#">WeGame</a></li>
+            <li><a href="#">游民星空</a></li>
+            <li><a href="#">游讯网</a></li>
+        </ul>
+    </section>
+    <div class="border"></div>
+    <!--留言板-->
+    <section class="about">
+        <h2 id="title6">留言板</h2>
+        <form action="" method="get" id="contact1">
+            <div class="form-row">
+                <label class="contact1" id="label3">
+                    <textarea name="content" id="content1" cols="20" rows="3" class="contact-input1" placeholder="您想对我们说些什么吗?"></textarea>
+                </label>
+                <label id="label4"><input type="image" src="images/留言.png" alt="图像按钮" title="提交" name="image"></label>
+            </div>
+        </form>
+    </section>
+</aside>
+</div>
+
+
+<!--页脚-->
+<div id="footer-wrapper">
+    <!--页脚导航-->
+    <footer class="container">
+        <section><a href="index.html">首页</a> <a href="contact.html">关于我们</a> <a href="#">服务条款</a> <a href="#">隐私策略</a> <a href="contact.html">联系我们</a></section>
+    </footer>
+</div>
+
+
+
+<!--版权标志-->
+<section id="copyright" class="container">
+    <a href="index.html">Hua'sGames</a>
+</section>
+</body>
+</html>

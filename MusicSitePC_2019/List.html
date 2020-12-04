@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云音乐后台管理系统</title>
+    <link rel="stylesheet" href="Currency.css">
+    <style>
+        #Main_content{
+            background-color:#F5F5F5;
+        }
+        #Main_nav{
+            background-color: #C20c0c;
+            margin: -40px 0 0 0;
+            height:30px;
+            font-size:20px;
+            color: #fefefe;
+            text-indent:100px;
+        }
+
+        #Main_content1{
+            margin-top:-40px;
+            margin-left:15%;
+            display:flex;
+            width:70%;
+        }
+        #Main_content_left{
+            flex:1;
+            height:1233px;
+            border-right:1px solid #dbdbdb;
+            border-left:1px solid #dbdbdb;
+            background-color: #f9f9f9;
+        }
+        #Main_content_right{
+            flex:4;
+            height:1233px;
+            border-right:1px solid #dbdbdb;
+            background-color: #fefefe;
+        }
+        .List_nav_ul h4{
+            height:80px;
+            line-height:110px;
+            text-indent:10px;
+        }
+        .List_nav_li{
+            list-style: none;
+            height:70px;
+        }
+        .List_nav_li a{
+            margin-left:15px;
+            font-size:13px;
+            line-height: 30px;
+            color: #000000;
+        }
+        .List_nav_li img{
+            margin:10px 10px 0 0;
+        }
+        .List_nav_li:hover{
+            background-color: #F4F2F2;
+        }
+        #Test{
+            background-color: #E6E6E6;
+        }
+        #Main_content_right_content{
+            flex-flow:row wrap;
+            margin:0 5% 0 5%;
+        }
+        #Main_content_right_top{
+            flex:1 1 80%;
+            margin:40px 0 40px 0;
+
+        }
+
+        #Main_content_right_bottom{
+            flex:1 1 80%;
+        }
+        #Main_content_right_top h4{
+            padding-left:170px;
+            margin-top:-130px;
+            font-size:20px;
+            font-weight: normal;
+        }
+        #Main_content_right_top button{
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            margin-top:50px;
+            margin-right:5px;
+            font-size:12px;
+            width: 80px;
+            height: 32px;
+            border-radius:5px;
+            border: #cbcbcb 1px solid;
+            background-image: linear-gradient(#fbfbfb, #efefef);
+        }
+        #Main_content_right_top_button1{
+            margin-left:170px;
+        }
+        #Main_content_right_top_button1:hover{
+            background-image: linear-gradient(#fbfbfb, #f9f9f9);
+        }
+        #Main_content_right_top_button2:hover{
+            background-image: linear-gradient(#fbfbfb, #f9f9f9);
+        }
+        #Main_content_right_middle{
+            flex:1 1 80%;
+            margin-bottom:10px;
+        }
+        #Main_content_right_middle_span1{
+            font-size:23px;
+        }
+        #Main_content_right_middle_span2{
+            font-size:10px;
+            color: #525252;
+            margin-left:10px;
+        }
+        #Main_content_right_middle_span3{
+            font-size:10px;
+            color: #525252;
+            /*margin-left:480px;*/
+            padding-top:10px;
+            float:right;
+        }
+        #Main_content_right_middle_span3 mark{
+            font-size:10px;
+            font-weight:bold;
+            color: #C20c0c;
+            background-color: #fbfbfb;
+        }
+        #Main_content_right_bottom_table{
+            width:100%;
+            border-left:#dbdbdb 1px solid;
+            border-right:#dbdbdb 1px solid;
+            border-bottom:#dbdbdb 1px solid;
+            border-top: #C20c0c 3px solid;
+            border-collapse: collapse;
+            table-layout:fixed;
+        }
+        #Main_content_right_bottom_table td{
+            height:30px;
+            font-size:10px;
+        }
+        #Main_content_right_bottom_table th{
+            border: #d3d3d3 1px solid;
+            height:40px;
+            padding-left:10px;
+            text-align:left;
+            font-size:12px;
+            font-weight:normal;
+            color:#525252;
+            background-image: linear-gradient(#fbfbfb, #efefef);
+        }
+        .Main_content_right_bottom_table_qi{
+            background-color: #F7F7F7;
+        }
+        .Main_content_right_bottom_table_ou{
+            background-color: #FFFFFF;
+        }
+        .Main_content_right_bottom_table_td1{
+            text-align:center;
+            color:#525252;
+        }
+        .Main_content_right_bottom_table_td24{
+            color: #000000;
+            padding-left:10px;
+        }
+        .Main_content_right_bottom_table_td3{
+            color:#525252;
+            padding-left:10px;
+        }
+        .Main_content_right_bottom_table_td5{
+            text-align:center;
+        }
+        .Main_content_button{
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            height:20px;
+            width:50px;
+            font-size:5px;
+            color: black;
+            border: 2px solid #d3d3d3;
+            margin-left:10px;
+            border-radius:3px;
+        }
+        .Main_content_right_bottom_table_ji_button{
+            background-color: #F7F7F7;
+        }
+        .Main_content_right_bottom_table_ji_button:hover{
+            background-color: #C20c0c;
+            color: white;
+        }
+        .Main_content_right_bottom_table_ou_button{
+            background-color: white;
+        }
+        .Main_content_right_bottom_table_ou_button:hover{
+            background-color: #C20c0c;
+            color: white;
+        }
+        /*翻页*/
+        #pagebar{
+            text-align:right;
+            margin-top:40px;
+            padding-bottom: 20px;
+        }
+        #pagebar a{
+            font-size:1em;
+            text-decoration:none;
+            color: #000000;
+            background-color: #d3d3d3;
+            display:inline-block;width:25px;height:25px;
+            text-align:center;
+            transition:all 0.5s ease;
+            padding-top:3px;
+        }
+        #pagebar a:hover{z-index:100;opacity:0.5;transform:scale(1.1);}
+        #pagebar .arrow{width:60px;}
+        .piclist #piclist-id{display:flex;margin-left:-20px;} /*flex，弹性伸缩盒布局*/
+        #Main_content_right_top img{
+            cursor: pointer;
+        }
+
+    </style>
+    <script>
+        function up(r) {
+            var i=r.parentNode.parentNode.rowIndex;
+            var biaoti = null;
+            var shichang = null;
+            var geshou =null;
+            biaoti = document.getElementById('Main_content_right_bottom_table').rows[i].cells[1].innerHTML;
+            shichang=document.getElementById('Main_content_right_bottom_table').rows[i].cells[2].innerHTML;
+            geshou =document.getElementById('Main_content_right_bottom_table').rows[i].cells[3].innerHTML;
+            document.getElementById('Main_content_right_bottom_table').rows[i].cells[1].innerHTML=document.getElementById('Main_content_right_bottom_table').rows[i-1].cells[1].innerHTML
+            document.getElementById('Main_content_right_bottom_table').rows[i].cells[2].innerHTML=document.getElementById('Main_content_right_bottom_table').rows[i-1].cells[2].innerHTML
+            document.getElementById('Main_content_right_bottom_table').rows[i].cells[3].innerHTML=document.getElementById('Main_content_right_bottom_table').rows[i-1].cells[3].innerHTML
+            document.getElementById('Main_content_right_bottom_table').rows[i-1].cells[1].innerHTML=biaoti;
+            document.getElementById('Main_content_right_bottom_table').rows[i-1].cells[2].innerHTML=shichang;
+            document.getElementById('Main_content_right_bottom_table').rows[i-1].cells[3].innerHTML=geshou;
+        }
+        function down(r) {
+            var i=r.parentNode.parentNode.rowIndex;
+            var biaoti = null;
+            var shichang = null;
+            var geshou =null;
+            biaoti = document.getElementById('Main_content_right_bottom_table').rows[i].cells[1].innerHTML;
+            shichang=document.getElementById('Main_content_right_bottom_table').rows[i].cells[2].innerHTML;
+            geshou =document.getElementById('Main_content_right_bottom_table').rows[i].cells[3].innerHTML;
+            document.getElementById('Main_content_right_bottom_table').rows[i].cells[1].innerHTML=document.getElementById('Main_content_right_bottom_table').rows[i+1].cells[1].innerHTML
+            document.getElementById('Main_content_right_bottom_table').rows[i].cells[2].innerHTML=document.getElementById('Main_content_right_bottom_table').rows[i+1].cells[2].innerHTML
+            document.getElementById('Main_content_right_bottom_table').rows[i].cells[3].innerHTML=document.getElementById('Main_content_right_bottom_table').rows[i+1].cells[3].innerHTML
+            document.getElementById('Main_content_right_bottom_table').rows[i+1].cells[1].innerHTML=biaoti;
+            document.getElementById('Main_content_right_bottom_table').rows[i+1].cells[2].innerHTML=shichang;
+            document.getElementById('Main_content_right_bottom_table').rows[i+1].cells[3].innerHTML=geshou;
+
+        }
+        function deleteRow(r)
+        {
+            var i=r.parentNode.parentNode.rowIndex;
+            document.getElementById('Main_content_right_bottom_table').deleteRow(i);
+        }
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div id="logo">
+            <img alt="云音乐logo" id = title_logo src="Images/logo.png">
+            <h1 id = title_name>云音乐</h1>
+        </div>
+        <div id="top">
+            <div id="User-img"><img src="Images/yonghu%20(1).svg" height="25px" width="25px"></div>
+            <div id="User">Hua<img src="Images/bottom.svg" height="20px" width="20px"></div>
+            <div id="User-img1">消息</div>
+            <div id="User-img2"><img src="Images/xiaoxi.svg" height="25px" width="25px"></div>
+
+        </div>
+    </div>
+<!--    <div id="title2"></div>-->
+    <div id="article">
+        <div id="menu">
+            <div id="help-left">
+                <ul class="nav1" id="help-left-ul">
+                    <li class="li1" id="menu-div1"><a href="2.0后台主页.html"><img src="Images/zhuye.svg" height="20px" width="20px">主页</a></li>
+                    <li class="li1" id="menu-div2">
+                        <a href="#"><img src="Images/yonghu%20(2).svg" height="20px" width="20px">用户管理<img id="li1-img" src="Images/xiangyou.svg" height="10px" width="10px" ></a>
+                        <ul class="nav2">
+                            <li class="li2"><a href="2.0用户信息管理.html">用户信息管理</a></li>
+                            <li class="li2"><a href="2.0用户浏览维护.html">用户浏览数据</a></li>
+                        </ul>
+                    </li>
+                    <li class="li1" id="menu-div3"><a href="2.0资讯内容审核.html"><img src="Images/zixun.svg" height="20px" width="20px">资讯管理</a></li>
+                    <li class="li1" id="menu-div4"><a href="List.html"><img src="Images/bangdan.svg" height="20px" width="20px">榜单管理</a></li>
+                    <li class="li1" id="menu-div5"><a href="Comment.html"><img src="Images/pinglun.svg" height="20px" width="20px">评论管理</a></li>
+                    <li class="li1" id="menu-div6"><a href="#"><img src="Images/lianxi.svg" height="20px" width="20px">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Main_content">
+            <article id="Main_content_article">
+                <div id="Main_content1">
+                    <div id="Main_content_left">
+                        <ul class="List_nav_ul"><h4>云音乐特色榜</h4>
+                            <li class="List_nav_li" id="Test"><a href="#"><img src="Images/飙升榜.PNG" height="50px" width="50px"></img>云音乐飙升榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/新歌榜.PNG" height="50px" width="50px">云音乐新歌榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/热歌榜.PNG" height="50px" width="50px">云音乐热歌榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/原创榜.PNG" height="50px" width="50px">原创歌曲榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/xinjian.svg" height="50px" width="50px">新增</a></li>
+
+                        </ul>
+                        <ul class="List_nav_ul"><h4>全球媒体榜</h4>
+                            <li class="List_nav_li"><a href="#"><img src="Images/说唱榜.PNG" height="50px" width="50px">云音乐说唱榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/古典音乐榜.PNG" height="50px" width="50px">云音乐古典音乐榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/电音榜.PNG" height="50px" width="50px">云音乐电音榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/抖音.PNG" height="50px" width="50px">抖音排行榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/iTunes.PNG" height="50px" width="50px">iTunes榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/日本.PNG" height="50px" width="50px">日本Oricon榜</a></li>
+                            <li class="List_nav_li"><a href="#"><img src="Images/xinjian.svg" height="50px" width="50px">新增</a></li>
+                        </ul>
+                    </div>
+                    <div id="Main_content_right">
+                        <div id="Main_content_right_content">
+                            <div id="Main_content_right_top">
+                                <img src="Images/榜单图片1.PNG" height="150px" width="150px">
+                                <h4>云音乐飙升榜<img src="Images/xiugai.svg" height="20px" width="20px"></h4>
+                                <button id="Main_content_right_top_button1">修改图片</button>
+                                <button id="Main_content_right_top_button2">删除榜</button>
+                            </div>
+                            <div id="Main_content_right_middle">
+                                <span id="Main_content_right_middle_span1">歌曲列表</span>
+                                <span id="Main_content_right_middle_span2">100首歌</span>
+                                <span id="Main_content_right_middle_span3">播放:<mark>2565428992</mark>次</span>
+                            </div>
+                            <div id="Main_content_right_bottom">
+                                <table id="Main_content_right_bottom_table">
+                                    <thead>
+                                    <tr>
+                                        <th width="10%"></th>
+                                        <th width="40%">标题</th>
+                                        <th width="10%">时长</th>
+                                        <th width="15%">歌手</th>
+                                        <th width="25%">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">1</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" disabled="disabled">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">2</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">3</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">4</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">5</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">6</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">7</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">8</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">9</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">10</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">11</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">12</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">13</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">14</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">15</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">16</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">17</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">18</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">19</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">20</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">21</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button"  onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">22</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">23</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">24</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">25</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">26</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_qi">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">27</td>
+                                        <td class="Main_content_right_bottom_table_td24">这一生关于你的风景</td>
+                                        <td class="Main_content_right_bottom_table_td3">4:36</td>
+                                        <td class="Main_content_right_bottom_table_td24">隔壁老樊</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ji_button" onclick="deleteRow(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="Main_content_right_bottom_table_ou">
+                                    <tr>
+                                        <td class="Main_content_right_bottom_table_td1">28</td>
+                                        <td class="Main_content_right_bottom_table_td24">人生浪费指南</td>
+                                        <td class="Main_content_right_bottom_table_td3">5:53</td>
+                                        <td class="Main_content_right_bottom_table_td24">夏日入侵企划</td>
+                                        <td class="Main_content_right_bottom_table_td5">
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="up(this)">Up</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" onclick="down(this)">Down</button>
+                                            <button class="Main_content_button Main_content_right_bottom_table_ou_button" disabled="disabled">Delete</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="pagebar">
+                                <a href="#" class="arrow">上一页</a>
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">7</a>
+                                <a href="#">8</a>
+                                <a href="#">9</a>
+                                <a href="#" class="arrow">下一页</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云音乐后台管理系统</title>
+    <link rel="stylesheet" href="Currency.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/highcharts.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+        #comment-border{/*右下主内容区*/
+            height:1190px;
+            background-color: #ffffff;
+        }
+        table{
+            border-collapse: collapse;
+            width:1353px;
+            table-layout:fixed;
+            text-align: center;
+            background-color: #ffffff;
+
+        }
+        .tr1 button{
+            margin-left: 8px;
+        }
+        .tr2 button{
+            margin-left: 8px;
+        }
+        /*翻页*/
+        #pagebar a{
+            font-size:1em;
+            text-decoration:none;
+            color: #000000;
+            background-color: #ffffff;
+            display:inline-block;width:25px;height:25px;
+            text-align:center;
+            transition:all 0.5s ease;
+            padding-top:3px;
+        }
+        #pagebar a:hover{z-index:100;opacity:0.5;transform:scale(1.1);}
+        <!--      -->
+        #title2{
+            position: relative;
+            background-color: #c80d00;
+            height: 15px;
+        }
+    </style>
+    <style>
+        #content1{
+            display: flex;
+        }
+        #用户数据一览{
+            width: 500px;
+            height: 500px;
+            position: relative;
+            left: 13%;
+            border-right: 1px solid #ccc;
+        }
+        #榜单数据一览{
+            width: 500px;
+            height: 500px;
+            position: relative;
+            left: 13%;
+        }
+        #评论数据一览{
+            width: 1000px;
+            height: 300px;
+            position: relative;
+            left:200px;
+            border-top: 1px solid #ccc;
+        }
+        .part_title{
+            position: relative;
+            left: 150px;
+            top: 30px;
+        }
+        .part_title2{
+            position: relative;
+            left:225px;
+            top: 30px;
+        }
+        #content3{
+            display: flex;
+            position: relative;
+            left:20%;
+            width: 1000px;
+            height: 150px;
+            text-align: center;
+            top:-10px
+        }
+        #用户数量 {
+            margin: 30px;
+            width: 200px;
+            height: 90px;
+            border-radius: 10px;
+            position: relative;
+            background-color: #e0e0e0;
+            right: 100px;
+        }
+        #用户数量1 {
+            margin:0 auto;
+            width: 130px;
+            height: 55px;
+            position: relative;
+            top:48px;
+            right:0px;
+        }
+        #用户数量2 {
+            margin:0 auto;
+            position: relative;
+            top: -55px;
+            width: 50px;
+            height: 25px;
+
+
+        }
+        #用户数量2 img{
+            width: 50px;
+            height: 50px;
+        }
+
+        #歌曲播放数量 {
+            margin: 30px;
+            width: 200px;
+            height: 90px;
+            border-radius: 10px;
+            position: relative;
+            background-color: #e0e0e0;
+        }
+        #歌曲播放数量1 {
+            margin:0 auto;
+            width: 130px;
+            height: 55px;
+            position: relative;
+            top:48px;
+
+        }
+        #歌曲播放数量2 {
+            margin:0 auto;
+            position: relative;
+            top: -55px;
+            width: 50px;
+            height: 25px;
+
+        }
+        #歌曲播放数量2 img{
+            width: 50px;
+            height: 50px;
+        }
+
+        #今日用户增量 {
+            margin: 30px;
+            width: 200px;
+            height: 90px;
+            border-radius: 10px;
+            position: relative;
+            left: 100px;
+            background-color: #e0e0e0;
+        }
+        #今日用户增量1 {
+            margin:0 auto;
+            width: 130px;
+            height: 55px;
+            position: relative;
+            top:48px;
+
+        }
+        #今日用户增量2 {
+            margin:0 auto;
+            position: relative;
+            top: -55px;
+            width: 50px;
+            height: 25px;
+
+        }
+        #今日用户增量2 img{
+            width: 50px;
+            height: 50px;
+        }
+        #container{
+            position: relative;
+            top: 50px;
+        }
+        #新内容提示{
+            background-color: #ffffff;
+            position: relative;
+            width: 300px;
+            height:500px;
+            left: 320px;
+        }
+        #split{
+            position: relative;
+            top: 5px;
+        }
+        #divScr {
+            position: relative;
+            overflow:hidden;
+            height:550px;
+            width:298px;
+            border:1px solid #e0e0e0;
+        }
+        #divScr a {
+            width: 100%;
+            overflow: hidden;
+            font: 18px/26px tahoma;
+            display: block;
+            text-decoration: none;
+            margin: 2px;
+            color: #000000;
+            padding-left: 2px;
+            text-align: left;
+        }
+        #divScrdivScr a:hover {
+            color: #ff6600;
+        }
+        #评论周数据一览{
+            position: relative;
+            left: 20%;
+        }
+        #container2{
+            position: relative;
+            top: 30px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var speed = 16
+            var demo = document.getElementById("divScr");
+            var demo2 = document.getElementById("divNews");
+            var demo1 = document.getElementById("divCont");
+            demo2.innerHTML = demo1.innerHTML;
+
+            function Marquee() {
+                if (demo2.offsetTop - demo.scrollTop <= 0) {
+                    demo.scrollTop -= demo1.offsetHeight
+                }
+                else {
+                    demo.scrollTop++
+                }
+            }
+
+            var MyMar = setInterval(Marquee, speed)//创建JS定时器
+            demo.onmouseover = function () {
+                clearInterval(MyMar)
+            }
+            demo.onmouseout = function () {
+                MyMar = setInterval(Marquee, speed)
+            }
+        }
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div id="logo">
+            <img alt="云音乐logo" id = title_logo src="Images/logo.png">
+            <h1 id = title_name>云音乐</h1>
+        </div>
+        <div id="top">
+            <div id="User-img"><img src="Images/yonghu%20(1).svg" height="25px" width="25px"></div>
+            <div id="User">Admin<img src="Images/bottom.svg" height="20px" width="20px"></div>
+            <div id="User-img1">消息</div>
+            <div id="User-img2"><img src="Images/xiaoxi.svg" height="25px" width="25px"></div>
+
+        </div>
+    </div>
+<!--    <div id="title2"></div>-->
+    <div id="article">
+        <div id="menu">
+            <div id="help-left">
+                <ul class="nav1" id="help-left-ul">
+                    <li class="li1" id="menu-div1"><a href="2.0后台主页.html"><img src="Images/zhuye.svg" height="20px" width="20px">主页</a></li>
+                    <li class="li1" id="menu-div2">
+                        <a href="#"><img src="Images/yonghu%20(2).svg" height="20px" width="20px">用户管理<img id="li1-img" src="Images/xiangyou.svg" height="10px" width="10px" ></a>
+                        <ul class="nav2">
+                            <li class="li2"><a href="2.0用户信息管理.html">用户信息管理</a></li>
+                            <li class="li2"><a href="2.0用户浏览维护.html">用户浏览数据</a></li>
+                        </ul>
+                    </li>
+                    <li class="li1" id="menu-div3"><a href="2.0资讯内容审核.html"><img src="Images/zixun.svg" height="20px" width="20px">资讯管理</a></li>
+                    <li class="li1" id="menu-div4"><a href="List.html"><img src="Images/bangdan.svg" height="20px" width="20px">榜单管理</a></li>
+                    <li class="li1" id="menu-div5"><a href="Comment.html"><img src="Images/pinglun.svg" height="20px" width="20px">评论管理</a></li>
+                    <li class="li1" id="menu-div6"><a href="#"><img src="Images/lianxi.svg" height="20px" width="20px">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Main_content">
+            <div id="comment-border">
+                <div id = content3>
+                    <div id="用户数量">
+                        <div id="用户数量1">
+                            当前在线用户数量<br>
+                            2560
+                        </div>
+                        <div id="用户数量2">
+                            <img src="素材/人logo.png">
+                        </div>
+                    </div>
+                    <div id="歌曲播放数量">
+                        <div id="歌曲播放数量1">
+                            今日音乐播放数量<br>
+                            27777
+                        </div>
+                        <div id="歌曲播放数量2">
+                            <img src="素材/音乐logo.png">
+                        </div>
+                    </div>
+                    <div id="今日用户增量">
+                        <div id="今日用户增量1">
+                            今日用户增量<br>
+                            7777
+                        </div>
+                        <div id="今日用户增量2">
+                            <img src="素材/增加logo.png">
+                        </div>
+                        <div id="新内容提示">
+                            <h4>
+                                <script type="text/javascript">
+                                    now = new Date();
+                                    hour = now.getHours();
+                                    if (hour<6){
+                                        document.write("凌晨了嗷");
+                                    }
+                                    else if(hour<12){
+                                        document.write("早上了嗷");
+                                    }
+                                    else if(hour<14){
+                                        document.write("中午了嗷");
+                                    }
+                                    else if(hour<18){
+                                        document.write("下午了嗷");
+                                    }
+                                    else if(hour<22){
+                                        document.write("晚上了嗷");
+                                    }
+                                    else{
+                                        document.write("命⑧💊🌶");
+                                    }
+                                </script>
+                                ，您离开时发生了这些事
+                            </h4>
+                            <hr id="split">
+
+                            <br>
+                            <div id="divScr">
+                                <div id="divCont">
+                                    <a href="#"></a>
+                                    <a href="#">川普发布了一条新评论</a><br>
+                                    <a href="#">川普上传了《Havana》</a><br>
+                                    <a href="#">蔡英文注销了账号</a><br>
+                                    <a href="#">安倍晋三上传了《千本嘤》</a><br>
+                                    <a href="#">奥巴马上传了《Creepers》</a><br>
+                                    <a href="#">希拉里发布了一条新评论</a><br>
+                                    <a href="#">G胖注册了账号</a><br>
+                                    <a href="#">Epic Sweeney发布了一条新评论</a><br>
+                                    <a href="#">金正恩给川普送出了火箭</a><br>
+                                    <a href="#">G胖发布了一条新评论</a><br>
+                                    <a href="#">R星官方号上传了《荒野大镖客2OST》</a><br>
+                                </div>
+                                <div id="divNews"></div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div id="content1">
+                    <div id="用户数据一览">
+                        <h2 class="part_title">用户日浏览量数据一览</h2>
+                        <div style="max-width:800px;height:400px">
+                            <canvas id="chartjs-pie-chart"></canvas>
+                        </div>
+                    </div>
+                    <div id="榜单数据一览">
+                        <h2 class="part_title">榜单歌曲数量一览</h2>
+                        <div id="container" style="max-width:800px;height:350px"></div>
+                    </div>
+                </div>
+                <div id = content2>
+                    <div id="评论数据一览">
+                        <div id="评论周数据一览">
+                            <h2 class="part_title2">评论周数据一览</h2>
+                        </div>
+                        <div id="container2" style="max-width:1000px;height:350px"></div>
+                    </div>
+                </div>
+            </div>
+            <script src="js/Chart.min.js"></script>
+            <script>
+
+                window.chartColors = {
+                    red: 'rgb(255, 99, 132)',
+                    orange: 'rgb(255, 159, 64)',
+                    yellow: 'rgb(255, 205, 86)',
+                    green: 'rgb(75, 192, 192)',
+                    blue: 'rgb(54, 162, 235)',
+                    purple: 'rgb(153, 102, 255)',
+                    grey: 'rgb(201, 203, 207)'
+                };
+
+                window.randomScalingFactor = function () {
+                    return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+                };
+                var pieConfig = {
+                    type: 'pie',
+                    data: {
+                        datasets: [{
+                            data: [
+                                400, 300, 800, 400, 100
+                            ],
+                            backgroundColor: [
+                                window.chartColors.red,
+                                window.chartColors.orange,
+                                window.chartColors.yellow,
+                                window.chartColors.green,
+                                window.chartColors.blue,
+                            ],
+                            label: 'Dataset 1'
+                        }],
+                        labels: [
+                            "0-5",
+                            "6-18",
+                            "19-29",
+                            "30-45",
+                            "45以上"
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        title: {
+                            display: true,
+                            text: ''
+                        }
+                    }
+                };
+
+                var pieCtx = document.getElementById("chartjs-pie-chart").getContext("2d");
+                window.myPie = new Chart(pieCtx, pieConfig);
+
+            </script>
+            <script>
+                var chart = Highcharts.chart('container', {
+                    title: {
+                        text: ' '
+                    },
+                    yAxis: {
+                        title: {
+                            text: '歌曲总量'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    plotOptions: {
+                        series: {
+                            label: {
+                                connectorAllowed: false
+                            },
+                            pointStart: 2
+                        }
+                    },
+                    series: [
+                        {
+                            name: '歌曲总量',
+                            data: [4466, 5343, 5934, 6676, 9656, 11114],
+                            color:"#ff0000"
+                        },
+
+                    ],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+                });
+            </script>
+            <script>
+                var chart = Highcharts.chart('container2', {
+                    title: {
+                        text: ' '
+                    },
+                    yAxis: {
+                        title: {
+                            text: '评论总量'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    plotOptions: {
+                        series: {
+                            label: {
+                                connectorAllowed: false
+                            },
+                            pointStart: 2
+                        }
+                    },
+                    series: [
+                        {
+                            name: '评论总数',
+                            data: [4466, 5343, 5934, 6676, 7656, 9114],
+                            color:"#050534"
+                        },
+
+                    ],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图文混排</title>
+    <style type="text/css">/*图文混排就是图+文而已*/
+        #content {font-family:微软雅黑,sans-serif}
+        .article{
+            display:inline-block;
+            background-color:#000;
+            color:#FFF;
+            width:600px;
+            padding:5px;
+            position:relative;
+            opacity:0.9;
+        }
+        .article h2 {
+            height:20px;
+            width:60px;
+            background-color:#F00;
+            font-weight:bolder;
+            text-align:center;
+            font-size:14px;
+            position:absolute;
+            top:20px;
+            right:0px;
+            z-index:1;
+        }
+        .article h3{font-size:12px;text-align:center;}
+        .article p{font-size:12px;text-indent:2em;}
+        @keyframes move{
+            0%{transform:scale(1);}
+            25%{transform:scale(0.8);}
+            50%{transform:scale(0.6);}
+            70%{transform:rotate(90deg);}
+            80%{transform:rotate(270deg);}
+            100%{transform:rotate(360deg);}
+        }
+        #photo:hover img{animation:move 2s linear infinite;}
+    </style>
+</head>
+<body>
+    <section id="centent">
+        <div class="article">
+            <h2>7月</h2>
+            <div id="photo">
+                <a href="#">
+                    <img src="images/CA2.jpg" ALT="">
+                </a>
+            </div>
+            <h3>草帽海贼团——海贼王</h3>
+            <p>船长：路飞；战斗员：索隆、山治。</p>
+        </div>
+    </section>
+</body>
+</html>

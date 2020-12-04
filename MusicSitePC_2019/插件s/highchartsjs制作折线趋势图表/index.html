@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>highcharts.js制作折线趋势图表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/highcharts.js"></script>
+<!--<script src="js/exporting.js"></script>--><!--下载按钮-->
+<!-- <script src="js/series-label.js"></script>
+<script src="js/oldie.js"></script>
+<script src="js/highcharts-zh_CN.js"></script>-->
+
+</head>
+<body>
+
+<div id="container" style="max-width:800px;height:400px"></div>
+<script>
+var chart = Highcharts.chart('container', {
+    title: {
+        text: '2月 ~ 7月 业绩流水情况'
+    },
+    subtitle: {
+        text: '数据来源：尚德鹰眼系统'
+    },
+    yAxis: {
+        title: {
+            text: '流水'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2
+        }
+    },
+    series: [
+	{
+        name: '员工A',
+        data: [43934, 52503, 57177, 69658, 97031, 119931],
+		color:"#ff0000"
+    }, 
+	{
+        name: '员工B',
+        data: [24916, 24064, 59742, 29851, 32490, 60282]
+    }, 
+	{
+        name: '员工C',
+        data: [11744, 37722, 16005, 19771, 20185, 24377]
+    }, 
+	{
+        name: '员工D',
+        data: [null, null, 7988, 12169, 15112, 22452]
+    }, 
+	{
+        name: '员工E',
+        data: [12908, 35948, 8105, 11248, 8989, 11816]
+    }
+	],
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+});
+</script>
+<!--highcharts.js 中搜索 credits属性，设置 enabled: false 隐藏底部网址   !0  显示 -->
+    <!--下面是无用代码-->
+    <a style="display:none" href="http://www.bootstrapmb.com">bootstrap模板库</a>
+    <!--上面是无用代码-->
+
+</body>
+</html>

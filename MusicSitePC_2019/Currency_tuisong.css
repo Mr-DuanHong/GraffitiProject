@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #ffffff;
+    width:1903px;    /*增加会导致界面右移*/
+}
+a {
+    text-decoration: none;    /*文本修饰，值可以是下划线、上划线、划掉、无*/
+}
+#main{/*我界面的所有内容都在一个main里*/
+    margin: auto;
+    background-color: #FEFEFE;
+}
+#title {  /*右上区*/
+    height: 60px;
+    display:flex;
+    width:100%;
+    max-width:1903px;
+}
+#top{
+    float:right;
+    height:60px;
+    flex:43;
+    display: inline-block;
+    background-color: #242424;
+}
+#logo{
+    height: 60px;
+    flex:6;
+    background-color: #242424;
+    display: inline-block;
+}
+#title2{
+    position: relative;
+    background-color: #C20c0c;
+    height: 15px;
+}
+#article{
+    display:flex;
+    width:100%;
+    max-width:1903px;
+}
+
+#menu {/*定义侧边栏*/
+    /*background-color: #1F2837;*/
+    background-color:#242424;
+    /*width: 260px;   !*侧边栏宽度，只是左下区。不包括左上Logo*!*/
+    flex:6;
+    height: 1233px;
+    float: left;
+}
+#Main_content{/*右侧内容区基本设置*/
+    flex:43;
+    padding-top: 40px;
+}
+
+
+/*侧边栏弹出*/
+#help-left ul li{
+    position:relative;
+}
+#help-left ul{
+    width:100%;
+    height:auto;
+    position:absolute;
+    background:#242424;
+    list-style:none;
+}
+#help-left{
+    margin-top: 30px;
+}
+#help-left .nav1{
+    position:static !important;
+}
+#help-left ul.nav2{   /*控制弹出的右侧菜单*/
+    left:228px;
+    top:0;
+    display:none;
+    width: 60%;
+}
+#help-left .nav1 .li1:hover ul.nav2{
+    display:block;
+    background:#1F2837;
+}
+.li2{
+    height:48px;
+    border-top: 1px solid #252D3C;/*用Border实现两个之间的缝隙效果*/
+    border-left:4px solid #1F2837;
+}
+.li2:hover{
+    transition: all 0.7s ease;/*transition过渡效果*/
+    background-color: #C20c0c;
+    border-left:5px solid #670b0b;
+    border-top: 2px solid #670b0b;
+}
+
+/*侧边栏的块*/
+.li1{
+    height: 48px;
+    line-height: 40px;
+    text-indent: 15px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 700;
+    border-top: 1px solid #464646;/*用Border实现两个之间的缝隙效果*/
+    border-left:4px solid #242424;
+    /*background-color: #1F2837;*/
+    background-color:#242424;
+    cursor: pointer;
+    transition: all 0.7s ease;
+}
+.li1 img{
+    padding-top:10px;
+    padding-right:10px;
+}
+.li1 ul{
+    display:inline-block;
+}
+.li1 a{
+    display: block;
+    color: #ffffff;
+
+}
+
+.li1:hover{
+    /*transform: scale(2);缩放动画*/
+    transition: all 0.7s ease;/*transition过渡效果*/
+    background-color: #C20c0c;
+    border-left:5px solid #670b0b;
+    border-top: 2px solid #670b0b;
+
+}
+#li1-img{
+    margin-left:105px;
+    margin-top:0;
+}
+#menu-div6{
+    border-bottom:1px solid #464646;
+}
+
+#title_logo{
+    width: 35px;
+    height: 35px;
+    position: relative;
+    left: 25px;
+    top: 13px;
+    border-radius: 30%;  /*圆角化背景框*/
+}
+#title_name{
+    position: relative;
+    left: 70px;
+    top: -23px;
+    color: #fefefe;
+    font-size: 20px;
+}
+#User{
+    padding-left: 1550px;
+    margin-top: -30px;
+    text-align : center;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ffffff;
+}
+#User:hover{
+    color:#C20c0c;
+}
+#User-img{
+    padding-left: 1460px;
+    margin-top: 15px;
+    text-align : center;
+    cursor: pointer;
+}
+#User-img1{
+    padding-left: 1300px;
+    margin-top: -20px;
+    font-weight: bold;
+    text-align : center;
+    cursor: pointer;
+    color: #ffffff;
+}
+#User-img2{
+    margin-top: -23px;
+    padding-left: 1230px;
+    text-align : center;
+    cursor: pointer;
+}
+#User-img1:hover{
+    color:#C20c0c;
+}
