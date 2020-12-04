@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        .top2{color: white;overflow: hidden;  width: 1000px;height: 70px;position: relative;top: 70px;left: 250px;border-bottom: #cccccc dashed 3px;
+            padding-bottom: 30px;margin-bottom: 50px;top: 100px;}
+        #img2{
+            height: 51px;
+            width: 261px;
+            background-repeat: no-repeat;
+            position: relative;top: 5px;left: 5px;
+        }
+        .top2>a{
+            float: left;
+            font-size: 23px;
+            font-weight: bolder;
+            font-family: Arial;
+            color: black;
+            text-decoration: none;
+            padding-left: 30px;
+            position: relative;
+            left: 420px;top: -35px;
+        }
+        .top2>a:hover{color:deepskyblue;}
+        #t1{color: white;background-color: deepskyblue;padding-left: 7px;width: 70px;height: 34px;text-align: center;margin-top: 2px;}
+        .t2{padding-left:20px;width:auto;height:auto;font-size:20px;margin-top:6px;}
+        #t2{position: relative;left: 415px;}
+    </style>
+    <style>
+        .title{height: 130px;width:1000px;border-bottom: 4px solid lightgray;
+        position: relative;top: 50px;left: 240px;}
+        .guang1{width: 300px;}
+        .nei{width: 150px;color: black}
+        .nei:hover{color: coral}
+        .tu1{width: 165px;height: 95px;}
+        #tu1{position: absolute;left: 10px;top: 20px;}
+        #nei1{position: absolute;left: 180px;top: 20px;}
+        #tu2{position: absolute;left: 340px;top: 18px;}
+        #nei2{position: absolute;left: 510px;top: 20px;}
+        #tu3{position: absolute;left: 670px;top: 18px;}
+        #nei3{position: absolute;left: 840px;top: 20px;}
+    </style>
+    <!--菜单栏-->
+    <style>
+        .zhu{width: 1000px;height:850px;position: relative;left: 240px;top:40px;}
+        h2>span:first-child{font-family: 微软雅黑;}
+        h2>span:last-child{color: lightgray}
+        .caidan1{width: 800px;height: 100px;}
+        .zi{text-decoration: none;padding-left: 20px;position:relative;left: 330px;top:-50px;color: black}
+        .zi:hover{color: deepskyblue}
+        li{list-style: none;float:left;}
+        a+span{position:relative;left: 330px;top:-50px;}
+    </style>
+    <!--主新闻-->
+    <style>
+        .liebiao{width: 700px;position:absolute;top:40px;}
+        .biao{width: 700px;height: 200px;}
+        dt>a:hover{filter:blur(3px)}
+        h3{position: absolute;left:350px;top:10px;overflow: hidden;font-size: 16px;font-weight: bolder;}
+        h3+p{position: absolute;left:350px;top:60px;font-size: 13px;text-indent: 6px;}
+        h3>a{color: darkorange;text-decoration: none}
+        h3>a:hover{color: #28ff20}
+        h3+p:hover{color: dodgerblue}
+
+
+        h4{position: absolute;left:350px;top:225px;overflow: hidden;font-size: 16px;font-weight: bolder;}
+        h4+p{position: absolute;left:350px;top:295px;font-size: 13px;text-indent: 6px;}
+        h4>a{color: darkorange;text-decoration: none}
+        h4>a:hover{color: #28ff20}
+        h4+p:hover{color: dodgerblue}
+
+
+        h5{position: absolute;left:350px;top:430px;overflow: hidden;font-size: 16px;font-weight: bolder;}
+        h5+p{position: absolute;left:350px;top:500px;font-size: 13px;text-indent: 6px;}
+        h5>a{color: darkorange;text-decoration: none}
+        h5>a:hover{color: #28ff20}
+        h5+p:hover{color: dodgerblue}
+
+        h6{position: absolute;left:350px;top:630px;overflow: hidden;font-size: 16px;font-weight: bolder;}
+        h6+p{position: absolute;left:350px;top:740px;font-size: 13px;text-indent: 6px;}
+        h6>a{color: darkorange;text-decoration: none}
+        h6>a:hover{color: #28ff20}
+        h6+p:hover{color: dodgerblue}
+    </style>
+    <!--侧边栏-->
+    <style>
+        .cebian{width: 300px;height: 800px;position: absolute;left: 710px;top:0px;}
+        div>span:first-child{font-family: 微软雅黑;font-size: 25px;font-weight: bolder}
+        div>span:last-child{color: darkgray;font-size: 25px;}
+        .top{position:relative;left: -30px;width: 300px;height: 100px;border-bottom: 2px solid lightgray;}
+        .cewen{color: black;text-decoration: none;position: relative;top: 15px; left: 10px;}
+        .cewen:hover{color: gold}
+        .zixu{font-size: 30px;position: relative;top: 15px;width:200px;}
+    </style>
+    <!--顶部底部-->
+    <style>
+
+        a{text-decoration:none}
+        a,img{border:0}
+        a,body,h3{color:#333}
+        li{list-style: none}
+
+        .fix-top{background-color:#000;color:#fff;width:100%;z-index:999999;font-size:16px;position:fixed;left:0;top:0}
+        .fix-top .container>span{font-family: Arial}
+        .fix-top .top{height: 22px;padding: 14px 0;line-height:2px;overflow:hidden;}
+        .fix-top li{float:left;margin-right:30px}
+        .fix-top li a{color: #fff;heigth:100%;display: inline-block}
+        .fix-top li a:hover{color:#03bbf2}
+        .footer{z-index: 9999;height:260px;background-color:#000;width:100%;margin-top:200px;padding-top:60px;overflow: hidden}
+        .footer .container div{float: left}
+        .footer .footerLogo{height: 150px;width: 342px;border-right: #333333 1px solid;text-align: center}
+        .footer strong a{display: inline-block;font-size: 19px;text-align: center;color: #ffffff;line-height:18px;margin: 35px 30px 30px 140px}
+        .container p{display: block;color: #cccccc;text-align: center;font-size: 15px;margin-top: auto}
+        .container a:hover{color: #cccccc}
+        .container{width:1200px;margin:0 auto;position: relative;}
+        .clearfix{zoom:1;display:block}
+        .footer .logo-footer img:hover{filter:alpha(opacity:100);opacity:1}
+        * html .clearfix{height:1%}
+        .f1{float:left;zoom: 1;margin-top: 10px;}
+        .fr{float: right;zoom: 1}
+        .f14{font-size: 14px;margin-top: 10px;}
+        .flag{margin: 0px 0px 20px 20px;position: relative;top: 0px}
+        .twitter{height:10px;width:10px;position: relative;bottom: 10px;right: 0px;margin-left: 730px}
+        #TopLogo{margin-top: 0px;margin-left:0px;position: relative;width:150px}
+        #last{position: relative;left: 175px;}
+    </style>
+
+    <style>
+        #button{width: 50px;height: 50px;border-radius: 8px;background-color: #cccccc;border: #cccccc hidden 1px;
+            font-size: x-large;color: #ffffff;position: fixed;bottom: 100px;right: 150px;text-align: center;line-height: 45px}
+        #button:hover{color: #03bbf2;cursor: pointer}
+    </style>
+    <title>新闻</title>
+</head>
+<body>
+<div class="fix-top">
+    <div class="container top clearfix">
+        <h2 class="flag fr">
+            <img src="imag/China20Flag.png" width="26" height="26">
+        </h2>
+        <span class="fr f14">Welcome To Billboard China ! </span>
+        <h1 class="f1" id="TopLogo">
+            <a href="billboard%20制作.html"><img src="imag/logo_white.png"></a>
+        </h1>
+        <ul class="top-word f1 clearfix">
+            <li><a href="shouye.html">首页</a></li>
+            <li><a href="#">乐评</a></li>
+            <li><a href="2.html">新闻</a></li>
+            <li><a href="#">采访</a></li>
+            <li><a href="billboard%20Hot%20100.html">榜单</a></li>
+            <li><a href="3.html">专题</a></li>
+            <li><a href="#">公告牌音乐奖</a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="top2">
+    <img src="imag/logo.png" height="52" width="261" id="img2"/>
+    <br/>
+    <a href="2.html" target="_blank" id="t1" >新闻</a>
+    <a href="billboard%20Hot%20100.html"  class="t2">Hot100</a>
+    <a href="#"  class="t2">Billboard200</a>
+    <a href="#" >采访</a>
+    <a href="3.html" id="t2">专题</a>
+</div>
+<!--头栏-->
+<div class="title">
+    <ul class="guang1">
+        <li>
+            <a href="#" id="a1">
+                <img src="imag/guang1.jpg" class="tu1" id="tu1"/>
+                <p class="nei" id="nei1">嘻哈传奇Run-D.M.C状告亚马逊起诉赔偿金超五千万美元</p>
+            </a>
+            <a href="#">
+                <img src="imag/guang2.jpg" class="tu1"id="tu2"/>
+                <p class="nei" id="nei2">吉克隽逸霸气登台唱功衣品皆获好评</p>
+            </a>
+            <a href="#">
+                <img src="imag/guang3.jpg" class="tu1" id="tu3"/>
+                <p class="nei" id="nei3">日剧《四重奏》即将上映讲述四位提琴手的结社生活</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--头栏-->
+<!--内容-->
+<div class="zhu">
+    <!--新闻主内容-->
+    <div class="xinwen">
+    <!--菜单栏-->
+        <div class="caidan">
+        <h2 id="c1">
+            <span>新闻</span>
+            <span>NEWS</span>
+        </h2>
+        <ul class="caidan1">
+            <li>
+                <a href="#" class="zi">全部</a>
+                <span>/</span>
+            </li>
+            <li>
+                <a href="#" class="zi">内地</a>
+                <span>/</span>
+            </li>
+            <li>
+                <a href="#" class="zi">港台</a>
+                <span>/</span>
+            </li>
+            <li>
+                <a href="#" class="zi">日韩</a>
+                <span>/</span>
+            </li>
+            <li>
+                <a href="#" class="zi">欧美</a>
+            </li>
+        </ul>
+        </div>
+    <!--菜单栏-->
+    <!--新闻列表-->
+        <div class="liebiao">
+            <dl class="biao">
+                <dt>
+                    <a href="1.html"><img src="imag/biao1.jpg" height="195" width="340"/></a>
+                </dt>
+                <dd>
+                    <h3><a href="1.html">众声喧哗的世界，需要安静且坚定“最好的耳朵"</a></h3>
+                    <p>出道11年“小球”庄鹃瑛温暖的歌声、满满的能量陪伴许多孤单、失落与需要力量的人，从棉花糖到主演电影《52赫兹我爱你》，
+                        大大小小的现场演出也都有出色的表现，用文字和音符穿透那些寂寞茫然与失措，更被喻为“一定要听她现场唱歌的女歌手！”而她在TICC台北国际会议中心举办个人首次大型售票演唱会“星星、
+                        城市与我们”，门票完售，12月即将开展内地7座城市的巡回演出。</p>
+                </dd>
+            </dl>
+            <dl class="biao">
+                <dt>
+                    <a href="1-2.html"><img src="imag/biao5.jpg" height="200" width="350"/></a>
+                </dt>
+                <dd>
+                    <h4><a href="1-2.html">王心凌在京举办全新专辑《CYNDILOVES2SING爱。心凌》媒体见面会</a></h4>
+                    <p>11月22日，王心凌在京举办个人第十二张全新专辑《CYNDILOVES2SING爱。心凌》亚洲媒体见面会，与众媒体及粉丝们分享全新音乐作品。</p>
+                </dd>
+            </dl>
+            <dl class="biao">
+                <dt>
+                    <a href="#"><img src="imag/biao3.jpg" height="195" width="340"/></a>
+                </dt>
+                <dd>
+                    <h5><a href="#">这场嗨到爆的潮流音乐节请来了MGK！</a></h5>
+                    <p>2018WR/OC潮流音乐节，一次充满仪式感的着陆，Accelerate自11.16到11.18上海北京，双城联动，全力为你呈现出与众不同的音乐盛筵，
+                        请接好这份惊喜！把枪口对准姆爷的“机关枪凯利”，带着他的乐队小弟们来中国了！你需要感受一下HIPHOP原始的狂放和躁动！MGK个人长达九十分钟的</p>
+                </dd>
+            </dl>
+            <dl class="biao">
+                <dt>
+                    <a href="#"><img src="imag/biao4.jpg" height="195" width="340"/></a>
+                </dt>
+                <dd>
+                    <h6><a href="#">陈粒新专辑MV《情景剧》上线 文艺电影风格“玩”出千面人生</a></h6>
+                    <p>随着《情景剧》MV的发布，音乐不设限的陈粒，通过影像更完整表达了新专辑《玩》，成为今年华语乐坛不可忽视的创新势力。</p>
+                </dd>
+            </dl>
+        </div>
+    <!--新闻列表-->
+    </div>
+    <!--新闻主内容-->
+    <!--侧边栏-->
+    <div class="cebian">
+        <div class="ce1">
+            <img src="imag/ce1.jpg" height="250" width="300"/>
+        </div>
+        <div class="hot">
+            <div class="cetitle">
+            <span>热门新闻</span>
+            <span>HOT NEWS</span>
+            </div>
+            <ol>
+                <li class="top">
+                    <strong class="zixu">01</strong>
+                    <a href="#" class="cewen">众声喧哗的世界，需要安静且坚定“最好的耳朵”</a>
+                </li>
+                <li class="top">
+                    <strong class="zixu">02</strong>
+                    <a href="#" class="cewen">让音乐的归音乐丨国外榜单如何才会更加接受中国...</a>
+                </li>
+                <li class="top">
+                    <strong class="zixu">03</strong>
+                    <a href="#" class="cewen">不止音乐的感官刺激丨2018凹凸音乐季倒计时4天</a>
+                </li>
+                <li class="top">
+                    <strong class="zixu">04</strong>
+                    <a href="#" class="cewen">马頔“青年王国”专场今日开票 圣诞西安勇气开唱</a>
+                </li>
+                <li class="top">
+                    <strong class="zixu">05</strong>
+                    <a href="#" class="cewen">贰佰发布新单曲《莎琳娜》 向年少时的记忆与想象致敬</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!--侧边栏-->
+</div>
+<!--内容-->
+<div class="footer">
+    <div class="container">
+
+        <div class="footerLogo">
+            <img src="imag/logo_footer.png">
+        </div>
+        <strong><a href="#">关于我们</a></strong>
+        <strong><a href="#">联系我们</a></strong>
+        <strong><a href="#">Billboard美国</a></strong>
+        <p>Copyright©2016-2017 Billboard China</p>
+        <p>All Rights Reserved</p>
+        <p>制作团队：X&S</p>
+        <div class="twitter"><p href="#"><img src="imag/Twitter.png"></p></div>
+    </div>
+</div>
+
+<script>
+    window.onload=function () {
+        var topButton= document.getElementById("button");
+        var timer=null;
+        var pageHight=document.documentElement.clientHeight;
+        window.onscroll=function () {
+            var backtop=document.body.scrollTop;
+            if(backtop>=pageHight)
+            {
+                topButton.style.display = "block";
+            }
+
+            else
+                topButton.style.display = "none";
+        }
+        topButton.onclick = function ()
+        {
+            timer = setInterval(function ()
+            {
+                var backtop = document.body.scrollTop;              //速度操作  减速
+                var speedtop = backtop / 5;
+                document.body.scrollTop = backtop - speedtop;  //高度不断减少
+                if (backtop == 0)
+                {  //滑动到顶端
+                    clearInterval(timer);  //清除计时器
+                }
+            },30)
+        }
+    }
+</script>
+<a id="button" title="To Top"  rel="script" style="display: none"> <strong>∧</strong></a>
+</body>
+</html>

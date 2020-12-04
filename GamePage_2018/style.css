@@ -1,0 +1,646 @@
+/*公共*/
+*{padding:0px;margin:0px}/*清楚所有元素的默认内外边距*/
+.container{width:1200px; margin:0 auto;}/*auto自动居中*/
+
+/*布局*/
+#content-wrapper article
+{
+    width:55%;
+    display:inline-block;
+    vertical-align:top; /*顶端垂直居中*/
+    margin-right:10px;
+    margin-left:15%;
+}
+#content-wrapper aside
+{
+
+    width:20%;
+    display:inline-block;
+    vertical-align:top;
+    margin-right:50px;
+    padding-left:20px;
+    border-left:#ccc dashed 1px;
+
+}
+/*左边内容区(最近新书最近畅销）水平呈现*/
+.article-section section
+{
+    width:33%;
+    display:inline-block;
+    vertical-align:top;
+    text-align:center;
+    margin:10px 0px 50px;
+}
+/*右侧边栏区水平呈现*/
+.aside-section
+{
+    width:40%;
+    display: inline-block;
+    vertical-align:top;
+    margin-right:5px;
+}
+
+.article-section section h3{margin:5px 0 10px 0;}
+
+
+/*本周推荐*/
+.recommend img  /*设置本周推荐图片*/
+{
+    display:inline-block;
+    width:100%; height:40%;
+    margin-bottom:0px;
+    margin-top:-10px;
+    margin-right: 40px;
+    transition: all 1s;
+}
+.img-box{
+    width:50%;
+    height:30%;
+    overflow:hidden;
+    display:inline-block;
+}
+.recommend img:hover{opacity:1;transform:scale(1.3);} /*当鼠标悬停 在图像时，不透明度变为0.8*/
+.recommend .recommend-content
+{
+    display:inline-block;
+    width:420px;
+    vertical-align:top;
+    box-sizing:border-box;  /*box-sizing：规定两个并排的带边框的框，规定了图左字右的结构*/
+    padding-right:20px;
+}
+.recommend h3{
+    font-size:2em;
+    width:94%;
+    margin-bottom:0px;
+    margin-top:0px;
+    color:#ffc107;
+    padding:0px 25px;
+}
+.recommend p{
+    width:94%;
+    height:236px;
+    margin-left:0px;
+    margin-top:0px;
+    margin-right:0px;
+    padding:0px 25px;
+    font-size:1.5em;
+    color:#FFFFFF;
+}
+/*最近更新*/
+.about img
+{
+    display:inline-block;
+    width:120px;
+    box-sizing:border-box;
+    padding:10px 10px;
+}
+.about p{
+    display:inline-block;
+    width:250px;
+    vertical-align:top;
+    box-sizing:border-box;
+    padding-bottom:10px;
+}
+
+/*文本*/
+body{font:62.5%/1.4 "微软雅黑",Verdana,Arial,helvetica,sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:1.6em}
+p,a,span{font-size:1.4em}
+p{text-indent:2em; text-align:justify;}/*justify 两端对齐*/
+ul{list-style-type:none;}
+img{border:none;}
+mark{background-color:#e3b503; color:#FFFFFF}
+.text-desc p{font-size:1.7em;}
+
+/*背景*/
+    /*页眉背景*/
+header{
+    height:100px;
+
+}
+    /*导航菜单背景*/
+#nav{
+    background-image:url("");
+    background-color: #ffffff;
+    height:60px;
+}
+    /*页脚背景*/
+#footer-wrapper{
+    background-color: #262626;
+    height:260px;
+}
+/*页脚文字*/
+footer section{float:right;}
+#copyright{
+    color: #ffffff;
+    text-align:center;
+    font-size:1.6em;
+    background-color:#262626;
+    width:100%;
+}
+    /*标题背景*/
+h2[id^="atitle"]{
+    height:30px;
+    color: #714633;
+    margin-top:5px;
+    margin-bottom:14px;
+    padding-top:10px;
+    padding-bottom:5px;
+    background-color: #e8e7ee;
+    padding-left:30px;
+    font-size:2em;
+    text-align:center;
+    vertical-align:middle;
+    font-weight:lighter;
+}
+h2[id^="title"]{
+    color: #714633;
+    margin-top:5px;
+    padding:5px;
+    background-image:url("tubiao/yangtao.png");
+    background-size:contain; /*如果没有这个，那么会显示不出来，因为图片真实大小太大*/
+    background-color:  #e8e7ee;
+    background-repeat:no-repeat;
+    padding-left:30px;
+    border-bottom:1px solid #834524;
+}
+
+/*其他细节*/
+/*本周推荐*/
+.recommend h3{  /*使本周推荐书名居中*/
+    text-align:center;
+    padding-bottom:10px;
+    padding-top:10px;
+}
+.recommend{
+    position:relative;
+}
+.recommend div{
+    margin:-7.5px 0px;
+}
+
+
+/*间隔图像*/
+.border{
+    border-bottom:1px dashed #dbdbdb;
+    margin:20px 0px;}
+
+
+/*边栏广告*/
+#advert a{display:block;}
+#advert img{width:170px;}
+#advert{margin:10px 0px;}
+
+/*关于书店*/
+.about h2{margin-bottom:10px;}
+
+
+
+/*页眉logo*/
+#logo{position:absolute; top:10px; left:45%;}
+#logo a{font-size:2em;color:#503;text-decoration:none;}/*text-decoration去掉了文本修饰：超链接带来的改变*/
+#logo a h1{
+    font-weight:normal;
+    color:#5bb2fc;
+    font-size: 2em;
+    font-family: 'Fugaz One', cursive;
+}
+#logo a h1:first-letter{font-size:140%;}/*第一个字符变大*/
+#logo a h1 span{color:#fec63f;}
+/*购物车菜单*/
+#nav nav{position:relative;}
+#menu-logo{position:absolute;right:-240px;top:-8px;}
+#menu-logo a{
+    display:inline-block;
+    color:#000000;
+    text-decoration:none;
+    font-size:1.8em;
+    line-height:40px;
+    text-align:center;
+    padding-left:40px;
+    padding-right:15px;
+    background-image:url("tubiao/gouwuche.PNG");
+    background-size:20px 20px;
+    background-repeat:no-repeat;
+    background-position:10px 12px;
+    background-color:#f3f3f3;}
+#menu-logo a:hover{color: #ff0047;}
+
+/*搜索*/
+#search{
+    position:absolute;
+    top:60px;
+    left:1538px;
+    text-align:right;
+}
+#search input[type="search"]{
+    font-family:"微软雅黑",sans-serif;
+    background:#f3f3f3;
+    border:solid 1px #ccc;
+    height:30px;
+    line-height:30px;
+    width:200px;
+    font-size:1.6em;
+    padding-left:5px;
+    display:inline-block;
+    vertical-align:top;
+}
+#search input[type="submit"]{
+    font-family:"微软雅黑",sans-serif;
+    background-color:#b4b4b4;
+    color:#fff;
+    border:solid 1px #b4b4b4;
+    height:30px;
+    display:inline-block;
+    font-size:1.6em;
+    vertical-align:top;
+    padding:0 10px;
+}
+
+/*本周推荐、今日阅读超链接*/
+.cart{text-decoration:none;/*加入购物车*/
+    background:#FF0000;
+    color:#FFFFFF;
+    line-height: 25px;
+    display:inline-block;
+    text-align:center;
+    width: 80px;
+    opacity:0.7
+}
+.cart:hover {text-decoration:none;opacity:1;}
+.more{
+    text-decoration:none;
+    background:#a15b39;
+    color:#FFFFFF;
+    line-height:25px;
+    display:inline-block;
+    text-align:center;
+    width:80px;
+    opacity:0.7;
+}
+.more:hover{text-decoration:none;opacity:1;}
+
+/*游戏分类和其他游戏网站超链接*/
+.aside-section li a{text-decoration:none;color:#000;}
+.aside-section a:hover{text-decoration:none;color:#d78849;}
+.aside-section ul{margin:10px 0 10px 20px;}
+
+/*页脚超链接*/
+footer a{
+    display:block;
+    float:left;
+    color:#FFF;
+    text-decoration:none;
+    width:100px;
+    text-align:center;
+    line-height:60px;
+    font-size:1.6em;
+}
+#copyright a{text-decoration:none;color:#000;}
+#copyright a:hover{text-decoration:none;color:#d78849;}
+
+/*今日阅读CSS动画*/
+.effect-1 img{vertical-align:middle;width:345px;}
+.text-desc {  /*前期设置：将文本段位置调到图片同一位置，然后用z-index使图片覆盖文字*/
+    position:absolute;
+    left:0px;
+    top:0px;
+    height:100%;
+    width:88%;
+    margin-bottom:25px;
+    padding:10px 10px 10px 18px;
+    opacity:0;
+    z-index:-1;
+
+}
+.effect-1 {
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(255,0,0,0.3);
+    perspective:800px; /*和下边的一起实现立体翻转，必须要放这里，放下边的话仍是垂直缩小*/
+    -webkit-perspective:800px;
+}
+.effect-1:hover .image-box{ /*过渡，当鼠标悬停图片时，图片沿x轴旋转75度;！注意：必须要有Perspective（见上）才能实现立体翻转，若无则只水平移动*/
+    transform:rotateX(75deg);
+    transition:1s;
+    transform-origin:center bottom;/*旋转轴为底部中心*/
+
+}
+.effect-1:hover .text-desc{/*鼠标悬停，显现文字*/
+    opacity:1;
+    transition:2s;
+}
+.btn{ /*加入购物车和详细内容两个按钮设计*/
+    display:inline-block;
+    padding:2px 10px;
+    font-size:14px;
+    color:#fff;
+    border:1px solid #FF0000;
+    background-color:#FF0000;
+    text-decoration:none;
+    transition:0.4s;
+}
+.btn:hover{ /*两按钮悬停变色*/
+    background-color:transparent;
+    color:#FF0000;
+    transition:0.4s;
+}
+
+/*热门游戏CSS动画*/
+    /*设置编号与文本阴影动画*/
+#best-selling li:before{ /*before选择器，在每个<p>元素前加入内容*/
+    content:counter(listxh);/*和下一个选择器第一行一起，构成一个序号计数器*/
+    background:#7b5830;
+    padding:2px 5px;
+    color:#fff;
+    margin-right:5px;
+    vertical-align:top
+}
+#best-selling li{
+    counter-increment:listxh; /*对部分和子部分进行编号*/
+    display:inline-block;
+    width:100%;
+    vertical-align:bottom;
+    overflow:hidden;
+    white-space:nowrap; /*规定段落中的文本不进行换行：*/
+    text-overflow:ellipsis; /*文本溢出时用省略号代替*/
+    margin-top:8px;
+    transition:text-shadow 1s linear; /*文本阴影动画设置,如果没有这个，那么阴影会一直有，而不是慢慢浮现*/
+    border-bottom:#CCC dashed 1px;
+}
+#best-selling li:hover{text-shadow:1px 4px 4px #000;} /*鼠标悬停时文本阴影*/
+    /*设置内容图片文本并行与文本设置*/
+#best-selling .curr .p-img{display:inline-block;}
+#best-selling .curr .p-name{display:inline-block; vertical-align:top;}
+#best-selling .curr .p-name strong{
+    display:block;
+    color:#FF0000;
+    text-align:left;
+    margin-top:20px;
+    font-size:1.4em;
+}
+#best-selling .curr .p-name del{font-size:1.4em;font-weight:900;}
+#best-selling a{color:#000000;text-decoration:none;font-size:1.6em;}
+
+    /*动画：鼠标悬浮标题时，隐藏标题并打开内容*/
+#best-selling .curr{display:none;} /*display:none设置隐藏*/
+#best-selling li:hover .selling{display:none;}
+#best-selling li:hover .curr{display:inline-block;}
+
+
+/*导航菜单*/
+nav ul li{display:inline-block;}/*导航菜单内容水平显示*/
+nav ul a{
+    display:inline-block;
+    line-height:60px;
+    width:200px;
+    text-align:center;
+    color:#ffffff;
+    text-decoration:none;
+    font-size:1.8em;
+    transition:background 0.5s linear;
+    z-index:-1;
+}
+nav ul a:hover{opacity: 0.9;}
+
+
+    /*下拉多级菜单*/
+#nav nav ul li{position:relative;}/*这个实现了下拉菜单由横版变竖版，why??*/
+#nav nav ul #ul3 li{background-color: #cfc5ff;}
+#nav nav ul #ul1 li{background-color: #e1d790;}
+#nav nav ul #ul2 li{background-color: #ffb0d0;}
+#nav nav ul ul li a{
+    border-left:solid 1px #834524;
+    border-right:solid 1px #834524; border-bottom:solid 1px #834524;
+}
+#nav nav ul ul { /*使分类里的列表平时不可见*/
+    visibility:hidden;/*visibility 属性规定元素是否可见*/
+    position:absolute;
+    left:-1px;
+    background-image:url("");
+    background-color:#99CC33;
+}
+#nav nav ul li:hover ul{visibility:visible;z-index:100;}
+
+
+/*面包屑导航样式*/
+.crumb-nav{font-size:1.4em;margin:5px 0px;}
+.crumb-nav a{text-decoration:none;color:#000;font-size:1em;}
+.curmb-nav a:hover, .crumb-nav a:visited{color:#d78849;}/*a:visited:选择已访问的链接，并设置其样式*/
+
+/*日期时间*/
+#displaydate{
+    display:inline-block;
+    position:relative;
+    color: #000000;
+    height:20px;
+    margin-left:65px;
+    margin-top:5px
+
+}
+#displaytime{
+    display:inline-block;
+    position:relative;
+    color: #000000;
+    margin-left:30px;
+    margin-top:5px
+}
+
+/*切换广告*/
+#adv dl,#adv dd{list-style:none;}
+#adv dt{position:absolute;bottom:5px;right:5px;}
+#adv dl dt a{
+    display:block;
+    float:left;
+    width:20px;
+    height:20px;
+    margin:4px;
+    border: #309099 solid 3px;
+    border-radius:15px;
+    background-color: #ffffff;
+    color:#FFF;
+    text-decoration:none;
+    text-align:center;
+    padding:0px;
+    font-size:12px;
+}
+#a1{position:relative;top:-150px;left:-960px;}
+#a2{position:relative;top:-150px;left:-940px;}
+#a3{position:relative;top:-150px;left:-920px;}
+#a4{position:relative;top:-150px;left:-900px;}
+#adv dl dt a:hover{background-color: #a548cc;}
+#adv img{height:auto;border:0;margin:-25px 5.8% -21px;}
+#jiange {margin-top:20px;}
+/*颜色*/
+.color1{
+    background: #5bb2fc;
+}
+.color2{
+    background:#ffa659;
+}
+.color3{
+    background: #B881CF;
+}
+.color4{
+    background: #fec63f;
+}
+.color5{
+    background:#58ebd3;
+}
+.color6{
+    background:#ff7a85;
+}
+.color7{
+    background: #5bb2fc;
+}
+/*登录区*/
+#qingdenglu {
+    margin-top:5px;
+    width:380px;
+    height:30px;
+    border:#000000 solid 1px;
+    border-radius:3px;
+    background-color: #000000;
+    opacity:1;
+}
+#qingdenglu h3{
+    color: #ffffff;
+    margin:4px 10px;
+    font-size:1.6em;
+    font-weight:normal;
+}
+#denglu{
+    width:380px;
+    height:240px;
+    border:#000000 solid 1px;
+    border-radius:3px;
+    background-color: #ffffff;
+}
+#username{
+    display:inline-block;
+    width:250px;
+    height:30px;
+    margin:-20px 20px 0px 80px;
+}
+#password{
+    display:inline-block;
+    width:250px;
+    height:30px;
+    margin:0px 20px 0px 80px;
+}
+#denglu img{
+    width:30px;
+    height: 30px;
+}
+#img-yonghuming{
+    display:inline-block;
+    position:relative;
+    top:27px;
+    left:40px;
+}
+#img-mima{
+    display:inline-block;
+    position:relative;
+    top:35px;
+    left:40px;
+}
+#jizhumima{
+    display:inline-block;
+    position:relative;
+    top:25px;
+    left:80px;
+}
+#denglu p a{
+    display:inline-block;
+    font-size:1em;
+    position:relative;
+    top:7px;
+    left:150px;
+
+}
+#div-denglu input{
+    display:inline-block;
+    width:50px;
+    height:22px;
+    margin-top:25px;
+    margin-left:167px;
+}
+
+/*留言板*/
+#label3 textarea{
+    width:375px;
+    height:100px;
+}
+#label4 input{
+    width:60px;
+    margin-left:155px;
+    margin-top:20px;
+}
+/*注册于关于我们*/
+#contact-left{
+    display:inline-block;
+    width:20%;
+    margin-right:0px;
+    position:relative;
+    top:-110px;
+    font-size: 1.3em;
+    font-weight:lighter;
+}
+#contact-left h3{
+    margin:10px 0px;
+    color:#5bb2fc;
+    font-size: 1.9em;
+    font-weight:normal;
+}
+
+#contact-right{
+    display:inline-block;
+    width:50%;
+    margin-left:200px;
+    margin-top:100px;
+    border-left:2px solid #5bb2fc;
+    border-bottom:2px solid #5bb2fc;
+    padding-left:30px;padding-bottom:35px;
+
+}
+.contact-form {
+    width:595px;
+    height:400px;
+    font-size:1.5em;
+    font-weight: lighter;
+}
+.form-row {
+    margin-left:40px;
+    margin-bottom:6px;
+    font-size:1.1em;
+    font-weight: lighter;
+}
+.form-row textarea{
+    width:300px;
+    height:100px;
+}
+#form-row-button input{
+    width:60px;
+    position:relative;
+    top:-60px;
+    left:500px;
+}
+#contact strong{
+    font-weight:lighter;
+}
+.form-subtitle h3{
+    font-weight:normal;
+    color: #5bb2fc;
+}
+#guanyuwomen{
+    width:540px;
+    height:40px;
+    background-color: #f1f1f1;
+    margin-top:30px;
+    margin-bottom:-50px;
+    color:#5bb2fc;
+    padding-top:14px;
+    padding-left:45%;
+    font-size:1.5em;
+    font-weight: lighter;
+}

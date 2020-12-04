@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人介绍网页</title>
+</head>
+<body>
+<input type="text" id="clock" size="35" />
+<script language=javascript>
+    var int=self.setInterval("clock()",5)
+    function clock()
+    {
+        var t=new Date()
+        document.getElementById("clock").value=t
+    }
+</script>
+</form>
+<button onclick="int=window.clearInterval(int)">
+    Stop interval</button>
+
+
+</body>
+</html>
